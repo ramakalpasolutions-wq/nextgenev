@@ -1,0 +1,452 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Root Variables --- */
+:root {
+  --primary-neon: #4ade80;
+  --secondary-neon: #22c55e;
+  --dark-bg: #020617;
+  --card-bg: #0b1120;
+  --text-light: #f9fafb;
+  --text-muted: #94a3b8;
+  --header-height: 70px;
+}
+
+/* --- Base --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  padding-top: var(--header-height);
+  overflow-x: hidden;
+}
+
+/* --- Smooth Scrolling --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Header --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background-color: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.header.scrolled {
+  border-bottom: 1px solid rgba(74, 222, 128, 0.3);
+  box-shadow: 0 4px 20px rgba(74, 222, 128, 0.1);
+}
+
+/* Logo */
+.logo-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-neon);
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+.logo-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Desktop nav */
+.header-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.header-nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 0;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.header-nav a:hover {
+  color: var(--primary-neon);
+}
+
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--primary-neon);
+  transition: width 0.3s;
+}
+
+.header-nav a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu trigger */
+.mobile-menu-trigger {
+  display: none;
+  color: var(--primary-neon);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Mobile nav modal */
+.mobile-nav-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.mobile-nav-modal.open {
+  display: block;
+  pointer-events: auto;
+}
+
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 55;
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100%;
+  background: var(--card-bg);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 65;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-modal.open .mobile-nav-panel {
+  transform: translateX(0);
+}
+
+.mobile-nav-topbar {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.mobile-close-btn {
+  background: none;
+  border: 0;
+  color: var(--primary-neon);
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  gap: 4px;
+}
+
+.mobile-nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 600;
+  padding: 14px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.mobile-nav-links a:hover {
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--primary-neon);
+}
+
+.mobile-contact {
+  margin: auto 20px 20px;
+  padding: 20px;
+  border: 1px solid var(--primary-neon);
+  border-radius: 12px;
+  background-color: var(--dark-bg);
+}
+
+.mobile-contact h4 {
+  color: var(--primary-neon);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.mobile-contact strong {
+  color: var(--primary-neon);
+}
+
+.mobile-contact a {
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.small.muted {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* --- Responsive --- */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .header-nav {
+    display: none !important;
+  }
+  .mobile-menu-trigger {
+    display: block !important;
+  }
+  .header {
+    padding: 0 24px;
+  }
+
+  /* Product sections - stack vertically */
+  .product-section-container {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .product-image-section,
+  .product-content-section {
+    order: unset !important;
+    max-width: 100% !important;
+  }
+
+  .product-image-section {
+    height: 450px !important;
+    width: 100% !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .header {
+    height: var(--header-height);
+    padding: 0 16px;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .logo-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Hero section mobile */
+  .hero-content-container {
+    padding: 0 16px !important;
+  }
+
+  /* Product sections on mobile */
+  .product-section {
+    padding: 60px 16px !important;
+  }
+
+  .product-section-container {
+    gap: 32px !important;
+  }
+
+  .product-image-section {
+    height: 380px !important;
+  }
+
+  .product-cta-section {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+  }
+
+  .product-cta-section > div,
+  .product-cta-section > a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .product-image-section {
+    height: 320px !important;
+  }
+
+  .hero-content-container h1 {
+    font-size: 36px !important;
+  }
+
+  .mobile-nav-panel {
+    width: 90% !important;
+  }
+  .foot-m{
+    color: #4ADE80 !important;
+    font-size: large;
+  }
+}
+
+/* --- Performance --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Utilities --- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary-neon), var(--secondary-neon));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium Page Background (if you have this defined elsewhere) */
+.premium-page-bg {
+  background: var(--dark-bg);
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }}
+
+  /* Footer layout tweaks for tablet & mobile */
+/* Footer responsive fixes - NO desktop changes */
+@media (max-width: 1024px) {
+  footer .grid {
+    grid-template-columns: 1fr 1fr !important;
+    row-gap: 32px !important;
+    gap: 24px !important;
+  }
+  footer h3 {
+    font-size: 1rem;
+  }
+}
+.footer-m{
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  footer {
+    margin-top: 40px !important; /* Added margin as requested */
+  }
+  footer .grid {
+    grid-template-columns: 1fr !important;
+    row-gap: 28px !important;
+    gap: 20px !important;
+  }
+  footer h3 {
+    font-size: 0.95rem;
+  }
+  footer p,
+  footer address,
+  footer li,
+  footer li a { /* Quick Links color fix */
+    color: #cccccc !important;
+    font-size: 0.8rem;
+  }
+  footer li a:hover {
+    color: #4ADE80 !important;
+  }
+}
+
+/* Ensure single scrollbar */
+html {
+  overflow-y: scroll;
+}
+body {
+  overflow: visible;
+}
+.site-main {
+  min-height: auto;
+  overflow: visible;
+}
+/* Contact page grid layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* Tablet: stack into one column */
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Mobile: tighter spacing */
+@media (max-width: 768px) {
+  .contact-grid {
+    gap: 24px;
+  }
+}

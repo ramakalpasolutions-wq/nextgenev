@@ -1,0 +1,714 @@
+/* dashboard.module.css */
+
+.container {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  padding: 20px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Header */
+.header {
+  max-width: 1400px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: #111827;
+  border-radius: 16px;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #4ade80, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Card */
+.card {
+  background: #111827;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+/* Buttons */
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #0a0a0a;
+}
+
+.dangerButton {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #1a1a1a;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+}
+
+.input:disabled {
+  background: #0a0a0a;
+  border-color: #333;
+  color: #888;
+}
+
+/* ==================== KEYFRAMES ==================== */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ==================== LAYOUT ==================== */
+.container {
+  min-height: 100vh;
+  background: #0A0A0A;
+  padding: 40px 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(24px, 5vw, 40px);
+  background: linear-gradient(135deg, #00FFFF, #4ADE80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  font-weight: 900;
+  animation: float 3s ease-in-out infinite;
+}
+
+.logoutBtn {
+  background: linear-gradient(135deg, #EF4444, #FF6B6B);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+  transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(239, 68, 68, 0.6);
+}
+
+/* ==================== CARD ==================== */
+.card {
+  background: #111827;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 12px 48px rgba(0, 255, 255, 0.4);
+}
+
+.cardEditing {
+  border: 2px solid #FBBF24;
+  box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+}
+
+/* ==================== FORM ==================== */
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.formTitle {
+  color: #4ADE80;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 1px solid #EF4444;
+  color: #EF4444;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(1.05);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: #0A0A0A;
+  border: 1px solid #333;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border-color: #00FFFF;
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.input:hover {
+  border-color: #555;
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.fileInput {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.fileInput::-webkit-file-upload-button {
+  background: linear-gradient(135deg, #00FFFF, #4ADE80);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #0A0A0A;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fileInput::-webkit-file-upload-button:hover {
+  transform: scale(1.05);
+}
+
+.fileSuccess {
+  color: #4ADE80;
+  font-size: 12px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fileCurrent {
+  color: #00FFFF;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* ==================== PROGRESS BAR ==================== */
+.progressContainer {
+  margin-top: 20px;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.progressMessage {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.progressComplete { color: #4ADE80; }
+.progressError { color: #EF4444; }
+.progressActive { color: #00FFFF; }
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: #1A1A1A;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progressFillSuccess {
+  background: linear-gradient(90deg, #4ADE80, #00FFFF);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+}
+
+.progressFillError {
+  background: #EF4444;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.progressFillActive {
+  background: linear-gradient(90deg, #00FFFF, #4ADE80);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  animation: shimmer 2s infinite;
+  background-size: 1000px 100%;
+}
+
+.progressText {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  background: linear-gradient(135deg, #4ADE80, #00FFFF);
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  color: #0A0A0A;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.4);
+}
+
+.btnEdit {
+  background: linear-gradient(135deg, #FBBF24, #00FFFF);
+}
+
+.btnDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btnDisabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.submitBtn {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ==================== VEHICLE LIST ==================== */
+.vehicleSection {
+  margin-top: 60px;
+}
+
+.sectionTitle {
+  color: #00FFFF;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emptyState {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  padding: 40px;
+  border: 2px dashed #333;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.vehicleGrid {
+  display: grid;
+  gap: 20px;
+}
+
+.vehicleCard {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.vehicleImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.vehicleImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.4);
+}
+
+.vehicleContent {
+  flex: 1;
+  min-width: 250px;
+}
+
+.vehicleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.vehicleBadge {
+  color: #0A0A0A;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.badge2w { background: #4ADE80; }
+.badge3w { background: #00FFFF; }
+
+.vehicleName {
+  color: #00FFFF;
+  font-size: 22px;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.vehicleMeta {
+  color: #999;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.vehicleActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.actionBtn {
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.viewBtn {
+  border: 1px solid #00FFFF;
+  color: #00FFFF;
+}
+
+.viewBtn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.editBtn {
+  border: 1px solid #FBBF24;
+  color: #FBBF24;
+}
+
+.editBtn:hover {
+  background: rgba(251, 191, 36, 0.1);
+  transform: scale(1.05);
+}
+
+.deleteBtn {
+  border: 1px solid #EF4444;
+  color: #EF4444;
+  padding: 8px;
+}
+
+.deleteBtn:hover {
+  background: #EF4444;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ==================== EXPANDED DETAILS ==================== */
+.expandedContent {
+  margin-top: 16px;
+  padding: 16px;
+  background: #0A0A0A;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.specItem {
+  padding: 12px;
+  background: #111827;
+  border-radius: 8px;
+  border-left: 3px solid #4ADE80;
+  transition: all 0.3s ease;
+}
+
+.specItem:hover {
+  transform: translateX(5px);
+  border-left-color: #00FFFF;
+}
+
+.specLabel {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.specValue {
+  color: #4ADE80;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.description {
+  color: #ccc;
+  margin-top: 12px;
+  font-size: 14px;
+  padding: 12px;
+  background: #111827;
+  border-radius: 8px;
+  border-left: 3px solid #00FFFF;
+}
+
+.descriptionLabel {
+  color: #4ADE80;
+  font-weight: 700;
+}
+
+/* ==================== SPINNER ==================== */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+.spinnerLarge {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+/* ==================== LOADING STATES ==================== */
+.loadingScreen {
+  min-height: 100vh;
+  background: #0A0A0A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loadingText {
+  color: #00FFFF;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ==================== BACKGROUND EFFECTS ==================== */
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.bgGradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+  animation: float 8s ease-in-out infinite;
+}
+
+.bgGradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 50%, rgba(74, 222, 128, 0.1) 0%, transparent 50%);
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 12px;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .vehicleCard {
+    flex-direction: column;
+  }
+  
+  .vehicleImage {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .vehicleActions {
+    width: 100%;
+  }
+  
+  .actionBtn {
+    flex: 1;
+    justify-content: center;
+  }
+}
