@@ -712,7 +712,7 @@ export default function ContactPage() {
                 >
                 Near Saptha Kanikalamma Temple, Tirupati Main Road,
                 <br />
-                Doddipalle, Chittoor - 517001
+                75 Doddipalle, Chittoor - 517001
                 <br />
                 Andhra Pradesh, India
                 </p>

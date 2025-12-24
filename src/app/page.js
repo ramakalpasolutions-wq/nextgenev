@@ -94,7 +94,7 @@ export default function Home() {
       category: "2-Wheeler",
       tagline: "Urban Mobility Redefined",
       description:
-        "Our 2-wheeler electric vehicles are designed for the modern urban commuter who values efficiency, sustainability, and style. With a sleek aerodynamic design and advanced battery technology, these vehicles offer an impressive range of up to 120 km on a single charge. Whether you're navigating busy city streets or cruising through suburban roads, our 2-wheelers deliver a smooth, silent, and eco-friendly ride. Equipped with fast charging capabilities, digital display, and eco mode, they combine cutting-edge technology with practical features to make your daily commute effortless and enjoyable.",
+        "Our 2-wheeler electric vehicles are designed for the modern urban commuter who values efficiency, sustainability, and style. With a sleek aerodynamic design and advanced battery technology, these vehicles offer an impressive range of up to 50KM to 150KM on a single charge. Whether you're navigating busy city streets or cruising through suburban roads, our 2-wheelers deliver a smooth, silent, and eco-friendly ride. Equipped with fast charging capabilities, digital display, and eco mode, they combine cutting-edge technology with practical features to make your daily commute effortless and enjoyable.",
       images: [],
     },
     {
@@ -103,7 +103,7 @@ export default function Home() {
       category: "3-Wheeler",
       tagline: "Built for Business",
       description:
-        "NextGen 3-wheelers are engineered for commercial excellence, offering unmatched reliability and performance for businesses across India. Built with a robust chassis and powerful electric motor, these vehicles can handle heavy payloads of up to 500 kg while maintaining exceptional energy efficiency. With a range of up to 150 km, our 3-wheelers are perfect for logistics, delivery services, and passenger transport. The low maintenance design and long-lasting battery ensure minimal downtime and maximum productivity. Experience the future of commercial mobility with vehicles that are as tough as your business demands, yet gentle on the environment.",
+        "NextGen 3-wheelers are engineered for commercial excellence, offering unmatched reliability and performance for businesses across India. Built with a robust chassis and powerful electric motor, these vehicles can handle heavy payloads of up to 500 kg while maintaining exceptional energy efficiency. With a range of up to 150KM to 300KM, our 3-wheelers are perfect for logistics, delivery services, and passenger transport. The low maintenance design and long-lasting battery ensure minimal downtime and maximum productivity. Experience the future of commercial mobility with vehicles that are as tough as your business demands, yet gentle on the environment.",
       images: [],
     },
   ]);
@@ -335,8 +335,8 @@ export default function Home() {
 
       },
       {
-        title: "3 Year Warranty",
-        desc: "On battery & motor",
+        title: "2+1 Year Warranty",
+        desc: "On battery",
         icon: "🛡️",
       },
       {

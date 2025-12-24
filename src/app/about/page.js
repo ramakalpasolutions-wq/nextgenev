@@ -46,7 +46,7 @@ export default function About() {
       icon: Users,
       title: "Network",
       description:
-        "Working with Sri Sai Enterprises to support riders, students, and small businesses with training, service, and after-sales support.",
+        "Working with Nextgen EV to support riders, students, and small businesses with training, service, and after-sales support.",
     },
     {
       icon: Globe,
@@ -122,8 +122,8 @@ export default function About() {
               opacity: 0.9,
             }}
           >
-            Nextgen EV is bringing future-ready electric mobility to Chittoor through Sri Sai
-            Enterprises in Doddipalle. From city commuters to commercial load carriers, our
+            Nextgen EV is bringing future-ready electric mobility from Chittoor through NextgenEV
+             in Doddipalle. From city commuters to commercial load carriers, our
             electric 2-wheelers and 3-wheelers are built for high performance, low running
             cost, and zero tailpipe emissions.
           </motion.p>
@@ -341,7 +341,7 @@ export default function About() {
             >
               Build a nationwide network where clean, intelligent EVs are the
               first choice for every short trip, last-mile delivery, and
-              commercial journey—starting from hubs like Sri Sai Enterprises in
+              commercial journey—starting from hubs like Nextgen Ev in
               Doddipalle, Chittoor.
             </p>
           </motion.div>
