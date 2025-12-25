@@ -335,7 +335,7 @@ export default function Home() {
               },
               {
                 title: "2+1 Year Warranty",
-                desc: "On battery",
+                desc: "On battery with ₹3 Cr insurance coverage",
                 icon: "🛡️",
               },
               {

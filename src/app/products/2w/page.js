@@ -6,7 +6,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Battery,
-  DollarSign,
+  IndianRupee,
   Gauge,
   Zap,
   Clock,
@@ -369,7 +369,7 @@ export default function TwoWheelers() {
               >
                 <SpecRow icon={<Battery size={18} />} label="Range" value={current.range} />
                 <SpecRow icon={<Gauge size={18} />} label="Top Speed" value={current.topSpeed} />
-                <SpecRow icon={<DollarSign size={18} />} label="Price" value={current.price} />
+                <SpecRow icon={<IndianRupee size={18} />} label="Price" value={current.price} />
               </motion.div>
 
               {/* Battery Section */}
@@ -456,7 +456,7 @@ export default function TwoWheelers() {
                 </motion.div>
               )}
 
-              {/* Vehicle Details Section - UPDATED */}
+              {/* Vehicle Details Section */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

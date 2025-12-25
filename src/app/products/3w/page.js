@@ -6,7 +6,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Battery,
-  DollarSign,
+  IndianRupee,
   Package,
   Zap,
   Clock,
@@ -369,7 +369,7 @@ export default function ThreeWheelers() {
               >
                 <SpecRow icon={<Battery size={18} />} label="Range" value={current.range} />
                 <SpecRow icon={<Package size={18} />} label="Payload" value={current.payload} />
-                <SpecRow icon={<DollarSign size={18} />} label="Price" value={current.price} />
+                <SpecRow icon={<IndianRupee size={18} />} label="Price" value={current.price} />
               </motion.div>
 
               {/* Battery Section */}
@@ -449,7 +449,7 @@ export default function ThreeWheelers() {
                 </motion.div>
               )}
 
-              {/* Vehicle Details Section - UPDATED */}
+              {/* Vehicle Details Section */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

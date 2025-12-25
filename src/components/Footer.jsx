@@ -18,10 +18,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-3 text-[#4ADE80]">Follow Us</h3>
             <p className="text-sm mb-4 text-[#cccccc]">
-              Stay connected with Nextgen EV for updates on electric mobility innovations.
+              Stay connected with Nextgen EV for<br/> updates on electric mobility innovations.
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4" style={{margintop:"20px"}}>
               {[FaFacebookF, FaInstagram, FaTwitter, FaYoutube].map((Icon, i) => (
                 <a
                   key={i}
@@ -59,7 +59,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-3 text-[#4ADE80]">About Nextgen EV</h3>
             <p className="text-sm mb-2 text-[#cccccc] leading-relaxed">
-              Nextgen EV is committed to delivering high-performance and sustainable
+              Nextgen EV is committed to<br/> delivering high-performance and sustainable<br/>
               electric vehicles designed for modern India.
             </p>
             <p className="text-xs text-[#4ADE80AA]">
@@ -73,7 +73,7 @@ export default function Footer() {
            <div>
               <p className="foot-m text-xs font-semibold text-[#4ADE80] mb-1">South India Distribution</p>
               <address className="not-italic text-xs text-[#cccccc] leading-relaxed">
-                Near Saptha Kanikalamma Temple, Tirupati Main Road,
+                Near Saptha Kanikalamma Temple,<br/> Tirupati Main Road,
                 <br />
                 Doddipalle, Chittoor - 517001
                 <br />
