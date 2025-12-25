@@ -174,18 +174,21 @@
   gap: 12px;
 }
 
+/* UPDATED - Added align-items: flex-start and gap */
 .specRow {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 12px;
 }
 
 .specLeft {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .specLabel {
@@ -194,10 +197,25 @@
   font-size: 14px;
 }
 
+/* UPDATED - Added flex properties */
 .specValue {
   color: #00FFFF;
   font-weight: 700;
   font-size: 15px;
+  text-align: right;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* NEW - Color wrap class */
+.colorWrap {
+  max-width: 200px;
+  white-space: normal !important;
+  word-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.5em;
+  text-align: right;
+  display: block;
 }
 
 .featuresWrapper {
@@ -326,6 +344,7 @@
     opacity: 1;
   }
 }
+
 .specSection {
   margin-top: 18px;
 }
@@ -339,6 +358,7 @@
   letter-spacing: 0.5px;
   opacity: 0.9;
 }
+
 /* Side Navigation Button Styles */
 .sideNavBtn {
   position: fixed;

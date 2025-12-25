@@ -73,7 +73,7 @@ export default function TwoWheelers() {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [loading, setLoading] = useState(true);
-  const router = useRouter(); // Added router
+  const router = useRouter();
   const minSwipeDistance = 50;
 
   useEffect(() => {
@@ -121,14 +121,8 @@ export default function TwoWheelers() {
               batteryCapacity: "48/60/72 Volts",
               batteryType: "Lithium-ion",
               chargingTime: "3-4 hours",
-              // chargingType: "Type 2",
-              // motorPower: "5 kW",
-              // torque: "170 Nm",
-              // acceleration: "8 sec",
-              // driveType: "Rear",
               warranty: "2 Years",
-
-              colors: "Black, White, Red, Greeen, blue, yellow, brown, siver, Gold, violet",
+              colors: "Black, White, Red, Green, Blue, Yellow, Brown, Silver, Gold, Violet",
               features: ["Fast Charging", "Digital Display", "Eco Mode"],
             },
           ]);
@@ -179,7 +173,7 @@ export default function TwoWheelers() {
   };
 
   const handleGoToThreeWheelers = () => {
-    router.push("/products/3w"); // Adjust path as needed
+    router.push("/products/3w");
   };
 
   if (loading) {
@@ -319,7 +313,7 @@ export default function TwoWheelers() {
           {showDropdown ? "Hide Details" : "View Specifications"}
         </motion.button>
 
-        {/* NEW: 3-Wheelers Navigation Button - Fixed Side Position */}
+        {/* 3-Wheelers Navigation Button - Fixed Side Position */}
         <motion.button
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -462,33 +456,46 @@ export default function TwoWheelers() {
                 </motion.div>
               )}
 
-              {/* Vehicle Details Section */}
-              {(current.warranty || current.colors) && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45 }}
-                  className={styles.specSection}
-                >
-                  <h4 className={styles.sectionTitle}>📋 Vehicle Details</h4>
-                  <div className={styles.specGrid}>
-                    {current.warranty && (
-                      <SpecRow
-                        icon={<Award size={18} />}
-                        label="Warranty"
-                        value={current.warranty}
-                      />
-                    )}
-                    {current.colors && (
-                      <SpecRow
-                        icon={<Palette size={18} />}
-                        label="Available Colors"
-                        value={current.colors}
-                      />
-                    )}
-                  </div>
-                </motion.div>
-              )}
+              {/* Vehicle Details Section - UPDATED */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 }}
+                className={styles.specSection}
+              >
+                <h4 className={styles.sectionTitle}>📋 Vehicle Details</h4>
+                <div className={styles.specGrid}>
+                  {/* Split warranty into three separate rows */}
+                  <SpecRow
+                    icon={<Battery size={18} />}
+                    label="Battery Warranty"
+                    value="2+1 Years"
+                  />
+                  <SpecRow
+                    icon={<Wrench size={18} />}
+                    label="Motor Warranty"
+                    value="1 Year"
+                  />
+                  <SpecRow
+                    icon={<Zap size={18} />}
+                    label="Charger Warranty"
+                    value="1 Year"
+                  />
+                  {current.colors && (
+                    <div className={styles.specRow}>
+                      <div className={styles.specLeft}>
+                        <span style={{ color: PRIMARY }}>
+                          <Palette size={18} />
+                        </span>
+                        <span className={styles.specLabel}>Available Colors</span>
+                      </div>
+                      <span className={`${styles.specValue} ${styles.colorWrap}`}>
+                        {current.colors}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
 
               {/* Features */}
               {current.features && current.features.length > 0 && (

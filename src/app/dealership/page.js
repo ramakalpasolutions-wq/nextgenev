@@ -64,6 +64,147 @@ export default function Dealership() {
       }}
     >
       <div style={{ width: "100%", maxWidth: "900px" }}>
+        {/* EXPANSION BANNER */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{
+            marginBottom: "32px",
+            padding: "32px 24px",
+            background: `linear-gradient(135deg, ${theme.primaryColor}15 0%, ${theme.primaryColor}05 100%)`,
+            borderRadius: "16px",
+            border: `2px solid ${theme.primaryColor}`,
+            textAlign: "center",
+            boxShadow: `0 8px 32px ${theme.primaryColor}20`,
+          }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              padding: "6px 16px",
+              backgroundColor: theme.primaryColor,
+              color: "#000",
+              borderRadius: "20px",
+              fontSize: "12px",
+              fontWeight: "700",
+              letterSpacing: "1px",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            Dealership Opportunity
+          </div>
+          
+          <h2
+            style={{
+              color: theme.primaryColor,
+              fontSize: "clamp(20px, 4vw, 28px)",
+              marginBottom: "16px",
+              marginTop: 0,
+              fontWeight: "800",
+              lineHeight: "1.3",
+            }}
+          >
+            We Are Expanding Our Distribution Network Across South India
+          </h2>
+
+          <p
+            style={{
+              color: theme.cardTextColor,
+              opacity: 0.9,
+              fontSize: "15px",
+              lineHeight: "1.6",
+              margin: "0 auto",
+              maxWidth: "700px",
+            }}
+          >
+            Join the electric revolution and be part of India's fastest-growing EV network
+          </p>
+        </motion.div>
+
+        {/* TARGET AUDIENCE CARDS */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "20px",
+            marginBottom: "32px",
+          }}
+        >
+          {[
+            {
+              icon: "🏢",
+              title: "Existing Distributors",
+              desc: "Expand your portfolio with premium EV products",
+            },
+            {
+              icon: "🏪",
+              title: "Retailers Looking to Expand",
+              desc: "Add high-demand electric vehicles to your offerings",
+            },
+            {
+              icon: "🚀",
+              title: "Sales Focused Entrepreneurs",
+              desc: "Build a profitable business in the booming EV sector",
+            },
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
+              style={{
+                padding: "24px 20px",
+                backgroundColor: theme.cardBaseBg,
+                borderRadius: "12px",
+                border: `1px solid ${theme.primaryColor}30`,
+                textAlign: "center",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-5px)";
+                e.currentTarget.style.borderColor = theme.primaryColor;
+                e.currentTarget.style.boxShadow = `0 8px 24px ${theme.primaryColor}25`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = `${theme.primaryColor}30`;
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <div style={{ fontSize: "40px", marginBottom: "12px" }}>
+                {item.icon}
+              </div>
+              <h3
+                style={{
+                  color: theme.primaryColor,
+                  fontSize: "16px",
+                  marginBottom: "8px",
+                  marginTop: 0,
+                  fontWeight: "700",
+                }}
+              >
+                {item.title}
+              </h3>
+              <p
+                style={{
+                  color: theme.cardTextColor,
+                  opacity: 0.8,
+                  fontSize: "13px",
+                  margin: 0,
+                  lineHeight: "1.5",
+                }}
+              >
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
         {/* HEADER */}
         <motion.div
           style={{
@@ -75,10 +216,24 @@ export default function Dealership() {
             textAlign: "center",
           }}
         >
-          <h1 style={{ color: theme.primaryColor, fontSize: "26px", marginBottom: "8px", marginTop: 0 }}>
+          <h1
+            style={{
+              color: theme.primaryColor,
+              fontSize: "26px",
+              marginBottom: "8px",
+              marginTop: 0,
+            }}
+          >
             Become Our Dealer
           </h1>
-          <p style={{ color: theme.cardTextColor, opacity: 0.85, fontSize: "14px", margin: 0 }}>
+          <p
+            style={{
+              color: theme.cardTextColor,
+              opacity: 0.85,
+              fontSize: "14px",
+              margin: 0,
+            }}
+          >
             Fill out the form and our team will contact you within 24-48 hours.
           </p>
         </motion.div>
@@ -98,7 +253,14 @@ export default function Dealership() {
         >
           {/* Name */}
           <div>
-            <label style={{ color: theme.primaryColor, fontSize: "14px", display: "block", marginBottom: "6px" }}>
+            <label
+              style={{
+                color: theme.primaryColor,
+                fontSize: "14px",
+                display: "block",
+                marginBottom: "6px",
+              }}
+            >
               Full Name *
             </label>
             <input
@@ -120,14 +282,23 @@ export default function Dealership() {
                 boxSizing: "border-box",
                 transition: "all 0.2s ease",
               }}
-              onFocus={(e) => (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)}
+              onFocus={(e) =>
+                (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)
+              }
               onBlur={(e) => (e.target.style.boxShadow = "none")}
             />
           </div>
 
           {/* Phone */}
           <div>
-            <label style={{ color: theme.primaryColor, fontSize: "14px", display: "block", marginBottom: "6px" }}>
+            <label
+              style={{
+                color: theme.primaryColor,
+                fontSize: "14px",
+                display: "block",
+                marginBottom: "6px",
+              }}
+            >
               Phone Number *
             </label>
             <input
@@ -149,14 +320,23 @@ export default function Dealership() {
                 boxSizing: "border-box",
                 transition: "all 0.2s ease",
               }}
-              onFocus={(e) => (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)}
+              onFocus={(e) =>
+                (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)
+              }
               onBlur={(e) => (e.target.style.boxShadow = "none")}
             />
           </div>
 
           {/* Email */}
           <div>
-            <label style={{ color: theme.primaryColor, fontSize: "14px", display: "block", marginBottom: "6px" }}>
+            <label
+              style={{
+                color: theme.primaryColor,
+                fontSize: "14px",
+                display: "block",
+                marginBottom: "6px",
+              }}
+            >
               Email *
             </label>
             <input
@@ -178,14 +358,23 @@ export default function Dealership() {
                 boxSizing: "border-box",
                 transition: "all 0.2s ease",
               }}
-              onFocus={(e) => (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)}
+              onFocus={(e) =>
+                (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)
+              }
               onBlur={(e) => (e.target.style.boxShadow = "none")}
             />
           </div>
 
           {/* Location */}
           <div>
-            <label style={{ color: theme.primaryColor, fontSize: "14px", display: "block", marginBottom: "6px" }}>
+            <label
+              style={{
+                color: theme.primaryColor,
+                fontSize: "14px",
+                display: "block",
+                marginBottom: "6px",
+              }}
+            >
               Dealership Location *
             </label>
             <input
@@ -207,14 +396,23 @@ export default function Dealership() {
                 boxSizing: "border-box",
                 transition: "all 0.2s ease",
               }}
-              onFocus={(e) => (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)}
+              onFocus={(e) =>
+                (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)
+              }
               onBlur={(e) => (e.target.style.boxShadow = "none")}
             />
           </div>
 
           {/* Message */}
           <div>
-            <label style={{ color: theme.primaryColor, fontSize: "14px", display: "block", marginBottom: "6px" }}>
+            <label
+              style={{
+                color: theme.primaryColor,
+                fontSize: "14px",
+                display: "block",
+                marginBottom: "6px",
+              }}
+            >
               Message
             </label>
             <textarea
@@ -236,7 +434,9 @@ export default function Dealership() {
                 boxSizing: "border-box",
                 transition: "all 0.2s ease",
               }}
-              onFocus={(e) => (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)}
+              onFocus={(e) =>
+                (e.target.style.boxShadow = `0 0 0 2px ${theme.primaryColor}55`)
+              }
               onBlur={(e) => (e.target.style.boxShadow = "none")}
             />
           </div>
@@ -250,7 +450,10 @@ export default function Dealership() {
             style={{
               padding: "14px",
               borderRadius: "10px",
-              backgroundColor: status === "loading" ? theme.primaryColor + "80" : theme.primaryColor,
+              backgroundColor:
+                status === "loading"
+                  ? theme.primaryColor + "80"
+                  : theme.primaryColor,
               color: "#000",
               fontWeight: 700,
               fontSize: "15px",
@@ -276,11 +479,24 @@ export default function Dealership() {
                 textAlign: "center",
               }}
             >
-              <div style={{ fontSize: "12px", marginBottom: "8px" }}>✓</div>
-              <p style={{ margin: 0, color: theme.primaryColor, fontSize: "15px", fontWeight: 700 }}>
+              <div style={{ fontSize: "32px", marginBottom: "8px" }}>✓</div>
+              <p
+                style={{
+                  margin: 0,
+                  color: theme.primaryColor,
+                  fontSize: "15px",
+                  fontWeight: 700,
+                }}
+              >
                 Request Submitted!
               </p>
-              <p style={{ margin: "4px 0 0 0", color: "#cbd5e1", fontSize: "13px" }}>
+              <p
+                style={{
+                  margin: "4px 0 0 0",
+                  color: "#cbd5e1",
+                  fontSize: "13px",
+                }}
+              >
                 We'll contact you within 24-48 hours.
               </p>
             </motion.div>
@@ -300,10 +516,23 @@ export default function Dealership() {
               }}
             >
               <div style={{ fontSize: "24px", marginBottom: "8px" }}>✗</div>
-              <p style={{ margin: 0, color: "#FF5555", fontSize: "15px", fontWeight: 700 }}>
+              <p
+                style={{
+                  margin: 0,
+                  color: "#FF5555",
+                  fontSize: "15px",
+                  fontWeight: 700,
+                }}
+              >
                 Error Submitting Request
               </p>
-              <p style={{ margin: "4px 0 0 0", color: "#cbd5e1", fontSize: "13px" }}>
+              <p
+                style={{
+                  margin: "4px 0 0 0",
+                  color: "#cbd5e1",
+                  fontSize: "13px",
+                }}
+              >
                 {errorMsg || "Please try again"}
               </p>
             </motion.div>

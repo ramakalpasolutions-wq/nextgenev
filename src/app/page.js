@@ -305,90 +305,98 @@ export default function Home() {
 
       {/* WHY CHOOSE US SECTION */}
       <section className={styles.whyChooseSection}>
-       <motion.div
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  className={styles.whyChooseContainer}
->
-  <h2 className={styles.whyChooseTitle}>
-    Why Choose{" "}
-    <span className={styles.whyChooseTitleAccent}>NextGen EV</span>
-  </h2>
-  <p className={styles.whyChooseDescription}>
-    Leading the electric revolution in India with innovative technology,
-    superior quality, and nationwide presence
-  </p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className={styles.whyChooseContainer}
+        >
+          <h2 className={styles.whyChooseTitle}>
+            Why Choose{" "}
+            <span className={styles.whyChooseTitleAccent}>NextGen EV</span>
+          </h2>
+          <p className={styles.whyChooseDescription}>
+            Leading the electric revolution in India with innovative technology,
+            superior quality, and nationwide presence
+          </p>
 
-  <div className={styles.statsGrid}>
-    {[
-      {
-        title: "100% Electric",
-        desc: "Zero emissions, pure performance",
-        icon: "⚡",
-      },
-      {
-      title: "Clean Mobility Facilities",
-      desc: "Sustainable electric mobility & supporting green transportation across India",
-      icon: "🌱"
+          <div className={styles.statsGrid}>
+            {[
+              {
+                title: "100% Electric",
+                desc: "Zero emissions, pure performance",
+                icon: "⚡",
+              },
+              {
+                title: "Clean Mobility Facilities",
+                desc: "Sustainable electric mobility & supporting green transportation across India",
+                icon: "🌱",
+              },
+              {
+                title: "2+1 Year Warranty",
+                desc: "On battery",
+                icon: "🛡️",
+              },
+              {
+                title: "24/7 Support",
+                desc: "Pan-India assistance",
+                icon: "💬",
+              },
+              {
+                title: "No Need Driving License",
+                desc: "No need registration",
+                icon: "🎫",
+              },
+              {
+                title: "No Noise",
+                desc: "No pollution",
+                icon: "🔇",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className={styles.statCard}
+              >
+                <div className={styles.statIcon}>{item.icon}</div>
+                <h3 className={styles.statTitle}>{item.title}</h3>
+                <p className={styles.statDescription}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-      },
-      {
-        title: "2+1 Year Warranty",
-        desc: "On battery",
-        icon: "🛡️",
-      },
-      {
-        title: "24/7 Support",
-        desc: "Pan-India assistance",
-        icon: "💬",
-      },
-    ].map((item, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: i * 0.1 }}
-        viewport={{ once: true }}
-        className={styles.statCard}
-      >
-        <div className={styles.statIcon}>{item.icon}</div>
-        <h3 className={styles.statTitle}>{item.title}</h3>
-        <p className={styles.statDescription}>{item.desc}</p>
-      </motion.div>
-    ))}
-  </div>
-</motion.div>
-{/* MINI DEALERSHIP PROMO SECTION */}
-<section className={styles.dealerPromoSection}>
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true }}
-    className={styles.dealerPromoContainer}
-  >
-    <div className={styles.dealerPromoContent}>
-      <p className={styles.dealerPromoTag}>Nationwide Network</p>
+        {/* MINI DEALERSHIP PROMO SECTION */}
+        <section className={styles.dealerPromoSection}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className={styles.dealerPromoContainer}
+          >
+            <div className={styles.dealerPromoContent}>
+              <p className={styles.dealerPromoTag}>Nationwide Network</p>
 
-      <h2 className={styles.dealerPromoTitle}>
-        Find an Authorized <span>NextGen EV Dealer</span>
-      </h2>
+              <h2 className={styles.dealerPromoTitle}>
+                Find an Authorized <span>NextGen EV Dealer</span>
+              </h2>
 
-      <p className={styles.dealerPromoDescription}>
-        Experience our electric vehicles in person. Locate your nearest
-        dealership, book a test drive, and get expert guidance today.
-      </p>
+              <p className={styles.dealerPromoDescription}>
+                Experience our electric vehicles in person. Locate your nearest
+                dealership, book a test drive, and get expert guidance today.
+              </p>
 
-      <Link href="/dealership" className={styles.ctaButton}>
-        Dealership →
-      </Link>
-    </div>
-  </motion.div>
-</section>
-
-
+              <Link href="/dealership" className={styles.ctaButton}>
+                Dealership →
+              </Link>
+            </div>
+          </motion.div>
+        </section>
       </section>
 
       {/* CTA SECTION */}
@@ -400,8 +408,10 @@ export default function Home() {
           viewport={{ once: true }}
           className={styles.ctaContainer}
         >
-          <h2 className={styles.ctaTitle}>Have Questions About Our Electric Vehicles?</h2>
-         
+          <h2 className={styles.ctaTitle}>
+            Have Questions About Our Electric Vehicles?
+          </h2>
+
           <div className={styles.ctaButtons}>
             <Link href="/about" className={styles.ctaButton}>
               Know More
