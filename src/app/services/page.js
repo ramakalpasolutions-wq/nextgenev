@@ -1,7 +1,15 @@
+// D:\ramakalpa project photos\code\nextgen\src\app\services\page.js
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Wrench, Truck, Lightbulb, Leaf, ChevronRight } from "lucide-react";
+import {
+  Zap,
+  Wrench,
+  Truck,
+  Lightbulb,
+  Leaf,
+  ChevronRight,
+} from "lucide-react";
 import Link from "next/link";
 
 const pageVariants = {
@@ -30,37 +38,51 @@ const cardTextColor = "#E5E5E5";
 export default function Services() {
   const services = [
     {
+      id: "battery-repair",
+      title: "EV Battery Repair",
+      desc: "Lithium-ion battery diagnostics, cell/module replacement, BMS repair, and range restoration for 2W & 3W EVs.",
+      icon: Wrench,
+      color: "#4ADE80",
+    },
+    {
+      id: "charger-repair",
+      title: "EV Charger Repair",
+      desc: "Repair and calibration of EV chargers: no output, slow charging, connector damage, and fan/cooling issues.",
+      icon: Zap,
+      color: "#22D3EE",
+    },
+    {
       id: "battery",
       title: "Battery Swap",
-      desc: "Instant fast-swap stations for commercial fleets.",
+      desc: "Instant fast-swap battery stations designed for commercial fleets and delivery partners.",
       icon: Zap,
       color: "#FFD700",
     },
     {
       id: "maintenance",
       title: "Maintenance",
-      desc: "Affordable on-demand EV service and repairs.",
+      desc: "Affordable on-demand EV service, periodic inspections, and mechanical/electrical repairs.",
       icon: Wrench,
       color: "#FF6B6B",
     },
     {
       id: "basic",
       title: "Basic Services",
-      desc: "Essential support for individual vehicle owners.",
+      desc: "Essential support for individual EV owners including health check and software updates.",
       icon: Lightbulb,
       color: "#FFB84D",
     },
     {
       id: "fleet",
       title: "Fleet Solutions",
-      desc: "Complete fleet management and tracking systems.",
+      desc: "Complete fleet management, telematics, and uptime monitoring for large operators.",
       icon: Truck,
       color: "#00D9FF",
     },
     {
       id: "eco",
       title: "Eco Charging",
-      desc: "Solar-powered charging and energy solutions.",
+      desc: "Solar-powered EV charging and green energy integration for homes and businesses.",
       icon: Leaf,
       color: "#3FBF85",
     },
@@ -100,7 +122,7 @@ export default function Services() {
             WebkitTextFillColor: "transparent",
           }}
         >
-          SERVICES & SOLUTIONS
+          SERVICES &amp; SOLUTIONS
         </p>
 
         <h1
@@ -124,7 +146,8 @@ export default function Services() {
             margin: "0 auto",
           }}
         >
-          Comprehensive EV solutions for owners and fleets worldwide.
+          Comprehensive EV solutions for vehicle owners, fleets, and charging
+          infrastructure.
         </p>
       </motion.div>
 
@@ -163,6 +186,7 @@ export default function Services() {
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
+                color: cardTextColor,
               }}
             >
               <motion.div
@@ -197,7 +221,11 @@ export default function Services() {
                     marginBottom: 16,
                   }}
                 >
-                  <IconComponent size={28} color={service.color} strokeWidth={1.5} />
+                  <IconComponent
+                    size={28}
+                    color={service.color}
+                    strokeWidth={1.5}
+                  />
                 </motion.div>
 
                 <h3
