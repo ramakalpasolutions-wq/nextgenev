@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+
 const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+
 
   useEffect(() => {
     if (!images || images.length === 0) return
@@ -13,6 +15,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
     }, autoPlayInterval)
     return () => clearInterval(interval)
   }, [images, autoPlayInterval])
+
 
   if (!images || images.length === 0) {
     return (
@@ -25,6 +28,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
       </div>
     )
   }
+
 
   return (
     <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl">
@@ -43,6 +47,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
         </div>
       ))}
 
+
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
         {images.map((_, index) => (
           <button
@@ -54,6 +59,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
           />
         ))}
       </div>
+
 
       {images.length > 1 && (
         <>
@@ -71,6 +77,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
   )
 }
 
+
 export default function Home() {
   const [heroImages, setHeroImages] = useState([])
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -80,7 +87,7 @@ export default function Home() {
       name: "NextGen 2-Wheeler Vehicles",
       category: "2-Wheeler",
       tagline: "Urban Mobility Redefined",
-      description:"Our 2-wheeler electric vehicles are designed for the modern urban commuter who values efficiency, sustainability, and style. With a sleek aerodynamic design and advanced battery technology, these vehicles offer an impressive range of up to 120 km on a single charge. Whether you're navigating busy city streets or cruising through suburban roads, our 2-wheelers deliver a smooth, silent, and eco-friendly ride. Equipped with fast charging capabilities, digital display, and eco mode, they combine cutting-edge technology with practical features to make your daily commute effortless and enjoyable.",
+      description: "Our 2-wheeler electric vehicles are designed for the modern urban commuter who values efficiency, sustainability, and style. With a sleek aerodynamic design and advanced battery technology, these vehicles offer an impressive range of 50 km to 150 km on a single charge. Whether you're navigating busy city streets or cruising through suburban roads, our 2-wheelers deliver a smooth, silent, and eco-friendly ride. Equipped with fast charging capabilities, digital display, and eco mode, they combine cutting-edge technology with practical features to make your daily commute effortless and enjoyable.",
       images: [],
       storageKey: 'twoWheelerUrls',
       features: [
@@ -93,8 +100,8 @@ export default function Home() {
       name: "NextGen 3-Wheeler Vehicles",
       category: "3-Wheeler",
       tagline: "Built for Business",
-      description:"NextGen 3-wheelers are engineered for commercial excellence, offering unmatched reliability and performance for businesses across India. Built with a robust chassis and powerful electric motor, these vehicles can handle heavy payloads of up to 500 kg while maintaining exceptional energy efficiency. With a range of up to 150 km, our 3-wheelers are perfect for logistics, delivery services, and passenger transport. The low maintenance design and long-lasting battery ensure minimal downtime and maximum productivity. Experience the future of commercial mobility with vehicles that are as tough as your business demands, yet gentle on the environment.",
-           images: [],
+      description: "NextGen 3-wheelers are engineered for commercial excellence, offering unmatched reliability and performance for businesses across India. Built with a robust chassis and powerful electric motor, these vehicles can handle heavy payloads of 700 kg to 800 kg while maintaining exceptional energy efficiency. With a range of 150 km to 300 km, our 3-wheelers are perfect for logistics, delivery services, and passenger(4+1) transport. The low maintenance design and long-lasting battery ensure minimal downtime and maximum productivity. Experience the future of commercial mobility with vehicles that are as tough as your business demands, yet gentle on the environment.",
+      images: [],
       storageKey: 'threeWheelerUrls',
       features: [
         { label: 'Range', value: '150-300 km', icon: '🔋' },
@@ -103,10 +110,10 @@ export default function Home() {
     },
     {
       id: 3,
-      name: "EV Lithium-ion Battery Repair",
+      name: "EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries Sales & Repair",
       category: "Battery & Pack Repair",
       tagline: "Restore Range. Extend Life.",
-      description: "Specialised repair of EV lithium-ion batteries including cell testing, module replacement, BMS diagnostics, and capacity restoration. Issues such as range drop, auto cut-off, overheating, or charging faults are identified using advanced testing tools and repaired with high-quality cells and components. Every serviced pack is balanced, safety-tested, and load-tested for reliable daily performance.",
+      description: "Specialised repair of EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries including cell testing, module replacement, BMS diagnostics, and capacity restoration. Issues such as range drop, auto cut-off, overheating, or charging faults are identified using advanced testing tools and repaired with high-quality cells and components. Every serviced pack is balanced, safety-tested, and load-tested for reliable daily performance.",
       images: [],
       storageKey: 'batteryRepairUrls',
       features: [
@@ -116,7 +123,7 @@ export default function Home() {
     },
     {
       id: 4,
-      name: "EV Charger Repair & Service",
+      name: "EV Chargers sale,Repair & Service",
       category: "Charger Repair",
       tagline: "Safe & Fast Charging, Always.",
       description: "Complete service and repair of EV chargers and power supplies including fan failure, no output, slow charging, fuse damage, and connector issues. Internal PCB, cooling system, MOSFETs, and protection circuits are inspected and repaired with compatible components. Each charger is calibrated for correct output voltage and current to protect your battery and deliver fast, consistent charging.",
@@ -131,6 +138,7 @@ export default function Home() {
     }
   ])
 
+
   // Load hero images from API
   useEffect(() => {
     const loadHeroImages = async () => {
@@ -143,10 +151,12 @@ export default function Home() {
       }
     }
 
+
     loadHeroImages()
     const interval = setInterval(loadHeroImages, 10000)
     return () => clearInterval(interval)
   }, [])
+
 
   // Hero image auto-slide
   useEffect(() => {
@@ -158,6 +168,7 @@ export default function Home() {
     }
   }, [heroImages.length])
 
+
   // Load all product images from API
   useEffect(() => {
     const loadAllImages = async () => {
@@ -165,11 +176,13 @@ export default function Home() {
         const response = await fetch('/api/media')
         const data = await response.json()
 
+
         const updatedProducts = products.map(product => {
           const imageData = data[product.storageKey] || []
           const imageUrls = imageData.map(item => item.url || item)
           return { ...product, images: imageUrls }
         })
+
 
         setProducts(updatedProducts)
       } catch (error) {
@@ -177,15 +190,18 @@ export default function Home() {
       }
     }
 
+
     loadAllImages()
     const interval = setInterval(loadAllImages, 10000)
     return () => clearInterval(interval)
   }, [])
 
+
   const currentImage = heroImages[currentImageIndex]
 
+
   return (
-    <main className="min-h-screen bg-[#FFFFF0]">
+    <main className="min-h-screen bg-[#FFFFF0] pt-20">
       {/* HERO SECTION */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-[#FFFFF0]">
         {currentImage ? (
@@ -205,8 +221,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-[#FFFFF0]" />
         )}
 
-      
-
         {heroImages.length > 1 && (
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
             {heroImages.map((_, index) => (
@@ -225,9 +239,11 @@ export default function Home() {
           <p className="text-[#36454F] text-sm font-bold mb-2 animate-pulse">SCROLL</p>
           <div className="text-[#36454F] text-2xl animate-bounce">↓</div>
         </div>
+
         
       </section>
-  <div className="relative z-10 text-center text-[#36454F] px-4 max-w-6xl mx-auto">
+
+<div className="relative z-10 text-center text-[#36454F] px-4 max-w-6xl mx-auto">
           <p className="text-xl md:text-2xl mb-4 font-bold tracking-wider text-[#36454F]/80">ELECTRIC REVOLUTION</p>
           
           <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tight text-[#36454F]">
@@ -237,7 +253,7 @@ export default function Home() {
           
           <p className="text-xl md:text-2xl mb-12 font-semibold max-w-4xl mx-auto text-gray-500">
             Experience India's most advanced electric 2-wheelers, 3-wheelers,
-            and expert EV battery & charger repair services.
+            and expert EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries & chargers Sales & repair services.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -265,11 +281,13 @@ export default function Home() {
                 <ImageCarousel images={product.images} />
               </div>
 
+
               <div className={`${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                 <p className="text-[#36454F]/70 font-bold text-lg mb-2">{product.category}</p>
                 <h2 className="text-4xl md:text-6xl font-black mb-4 text-[#36454F]">{product.name}</h2>
                 <p className="text-2xl text-[#36454F] font-bold mb-6">{product.tagline}</p>
                 <p className="text-[#36454F] text-lg leading-relaxed mb-8">{product.description}</p>
+
 
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   {product.features.map((feature, idx) => (
@@ -280,6 +298,7 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+
 
                 <div className="flex gap-4">
                   <Link href={product.id <= 2 ? "/products" : "/contact"} className="flex-1">
@@ -293,6 +312,7 @@ export default function Home() {
           </div>
         </section>
       ))}
+
 
       {/* WHY CHOOSE US */}
       <section className="py-10 md:py-10 px-4 md:px-8 bg-[#FFFFF0]">
@@ -312,8 +332,8 @@ export default function Home() {
             {[
               { icon: '⚡', title: '100% Electric', desc: 'Zero emissions, pure performance' },
               { icon: '🌱', title: 'Clean Mobility Facilities', desc: 'Sustainable electric mobility & supporting green transportation across India' },
-              { icon: '🔧', title: '3 Year Warranty', desc: 'On battery & motor for new vehicles' },
-              { icon: '💬', title: '24/7 Support', desc: 'Pan-India assistance for vehicles & repairs' }
+              { icon: '🔧', title: '3 Year Warranty', desc: 'On battery for new vehicles' },
+              { icon: '💬', title: '1 Year Warranty', desc: 'on motor,controller and charger' }
             ].map((feature, i) => (
               <div key={`why-${i}`} className="bg-[#FFFFF0] p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all text-center border-2 border-[#36454F]/10 hover:border-[#A8E600] group">
                 <div className="text-8xl mb-6 transform group-hover:scale-125 transition-transform">{feature.icon}</div>
@@ -324,6 +344,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* DEALERSHIP PROMO */}
       <section className="py-10 md:py-10 px-4 md:px-8 bg-[#FFFFF0]">
@@ -343,6 +364,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
 
       {/* CTA SECTION */}
       <section className="py-20 md:py-32 px-4 md:px-8 bg-[#FFFFF0]">

@@ -19,7 +19,7 @@ const ProductCarousel = ({ images }) => {
 
   if (!images || images.length === 0) {
     return (
-      <div className="flex items-center justify-center h-96 bg-gradient-to-br from-[#A8E600]/10 to-[#36454F]/10 rounded-2xl border-2 border-dashed border-[#36454F]/20">
+      <div className="flex items-center justify-center h-96 bg-gradient-to-br from-blue-200/20 to-[#36454F]/10 rounded-2xl border-2 border-dashed border-blue-300">
         <div className="text-center p-8">
           <div className="text-6xl mb-4">📷</div>
           <p className="text-xl text-[#36454F] font-bold mb-2">No Images Available</p>
@@ -57,7 +57,7 @@ const ProductCarousel = ({ images }) => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === index ? 'bg-[#A8E600] w-6' : 'bg-[#36454F]/30 w-2 hover:bg-[#36454F]/60'
+                  currentIndex === index ? 'bg-blue-500 w-6' : 'bg-blue-200 w-2 hover:bg-blue-300'
                 }`}
               />
             ))}
@@ -83,7 +83,7 @@ const ProductCarousel = ({ images }) => {
 }
 
 
-export default function ThreeWheelerProducts() {
+export default function BatteriesPage() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -92,9 +92,9 @@ export default function ThreeWheelerProducts() {
     try {
       const response = await fetch('/api/media')
       const data = await response.json()
-      setProducts(data.threeWheelerProducts || [])
+      setProducts(data.batteryProducts || [])
     } catch (error) {
-      console.error('Error loading 3W products:', error)
+      console.error('Error loading batteries:', error)
     } finally {
       setLoading(false)
     }
@@ -111,7 +111,7 @@ export default function ThreeWheelerProducts() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#FFFFF0] flex items-center justify-center pt-24">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#A8E600] border-t-[#36454F]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-[#36454F]"></div>
       </div>
     )
   }
@@ -182,11 +182,11 @@ export default function ThreeWheelerProducts() {
         </Link>
 
 
-        {/* Batteries Button */}
-        <Link href="/products/batteries">
-          <button className="float-btn flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full font-bold shadow-lg group transition-all duration-400">
-            <span className="text-xl md:text-2xl transition-transform duration-400 group-hover:scale-110">🔋</span>
-            <span className="expand-text hidden group-hover:inline text-sm whitespace-nowrap pr-2 transition-all duration-400">Batteries</span>
+        {/* 3-Wheeler Button */}
+        <Link href="/products/3w">
+          <button className="float-btn flex items-center gap-2 bg-[#36454F] hover:bg-[#2a3238] text-white p-3 rounded-full font-bold shadow-lg group transition-all duration-400">
+            <span className="text-xl md:text-2xl transition-transform duration-400 group-hover:scale-110">🛺</span>
+            <span className="expand-text hidden group-hover:inline text-sm whitespace-nowrap pr-2 transition-all duration-400">3-Wheeler</span>
           </button>
         </Link>
 
@@ -205,10 +205,10 @@ export default function ThreeWheelerProducts() {
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-black text-[#36454F] mb-4">
-            3-Wheeler <span className="text-[#A8E600]">Electric Vehicles</span>
+            Replacement <span className="text-blue-500">Batteries</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-600">
-            Built for Business - Powerful, Reliable, Cost-Effective
+            High-Performance, Long-Lasting Battery Solutions
           </p>
         </div>
       </section>
@@ -219,11 +219,11 @@ export default function ThreeWheelerProducts() {
         <div className="max-w-6xl mx-auto">
           {products.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-2xl">
-              <div className="text-7xl mb-4">🛺</div>
-              <h2 className="text-3xl font-black text-[#36454F] mb-3">No Products Available</h2>
-              <p className="text-lg text-gray-600 mb-6">Our 3-wheeler products are being updated. Check back soon!</p>
+              <div className="text-7xl mb-4">🔋</div>
+              <h2 className="text-3xl font-black text-[#36454F] mb-3">No Batteries Available</h2>
+              <p className="text-lg text-gray-600 mb-6">Our battery products are being updated. Check back soon!</p>
               <Link href="/contact">
-                <button className="bg-[#A8E600] hover:bg-[#98d600] text-[#36454F] font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
                   Contact Us for Details
                 </button>
               </Link>
@@ -242,9 +242,10 @@ export default function ThreeWheelerProducts() {
                     {/* Details Section */}
                     <div className={`${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                       <h2 className="text-3xl md:text-4xl font-black text-[#36454F] mb-3">{product.name}</h2>
-                      
+
+
                       {product.price && (
-                        <p className="text-2xl md:text-3xl text-[#A8E600] font-black mb-4">{product.price}</p>
+                        <p className="text-2xl md:text-3xl text-blue-600 font-black mb-4">{product.price}</p>
                       )}
 
 
@@ -253,46 +254,32 @@ export default function ThreeWheelerProducts() {
 
                       {/* Specifications Grid */}
                       <div className="grid grid-cols-2 gap-3 mb-6">
-                        {product.range && (
-                          <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-[#A8E600] hover:shadow-md transition-all duration-300">
-                            <div className="text-2xl mb-1">🔋</div>
-                            <div className="text-xs text-gray-600 font-semibold">Range</div>
-                            <div className="text-sm font-black text-[#36454F]">{product.range}</div>
+                        {product.capacity && (
+                          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 hover:border-blue-500 hover:shadow-md transition-all duration-300">
+                            <div className="text-2xl mb-1">🔌</div>
+                            <div className="text-xs text-gray-600 font-semibold">Capacity</div>
+                            <div className="text-sm font-black text-[#36454F]">{product.capacity}</div>
                           </div>
                         )}
-                        {product.payload && (
-                          <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-[#A8E600] hover:shadow-md transition-all duration-300">
-                            <div className="text-2xl mb-1">📦</div>
-                            <div className="text-xs text-gray-600 font-semibold">Payload</div>
-                            <div className="text-sm font-black text-[#36454F]">{product.payload}</div>
+                        {product.voltage && (
+                          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 hover:border-blue-500 hover:shadow-md transition-all duration-300">
+                            <div className="text-2xl mb-1">⚡</div>
+                            <div className="text-xs text-gray-600 font-semibold">Voltage</div>
+                            <div className="text-sm font-black text-[#36454F]">{product.voltage}</div>
                           </div>
                         )}
-                        {product.motor && (
-                          <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-[#A8E600] hover:shadow-md transition-all duration-300">
-                            <div className="text-2xl mb-1">⚙️</div>
-                            <div className="text-xs text-gray-600 font-semibold">Motor</div>
-                            <div className="text-sm font-black text-[#36454F]">{product.motor}</div>
+                        {product.warranty && (
+                          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 hover:border-blue-500 hover:shadow-md transition-all duration-300">
+                            <div className="text-2xl mb-1">✅</div>
+                            <div className="text-xs text-gray-600 font-semibold">Warranty</div>
+                            <div className="text-sm font-black text-[#36454F]">{product.warranty}</div>
                           </div>
                         )}
                         {product.chargingTime && (
-                          <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-[#A8E600] hover:shadow-md transition-all duration-300">
-                            <div className="text-2xl mb-1">⚡</div>
+                          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 hover:border-blue-500 hover:shadow-md transition-all duration-300">
+                            <div className="text-2xl mb-1">⏱️</div>
                             <div className="text-xs text-gray-600 font-semibold">Charging</div>
                             <div className="text-sm font-black text-[#36454F]">{product.chargingTime}</div>
-                          </div>
-                        )}
-                        {product.topSpeed && (
-                          <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-[#A8E600] hover:shadow-md transition-all duration-300">
-                            <div className="text-2xl mb-1">🏁</div>
-                            <div className="text-xs text-gray-600 font-semibold">Top Speed</div>
-                            <div className="text-sm font-black text-[#36454F]">{product.topSpeed}</div>
-                          </div>
-                        )}
-                        {product.batteryCapacity && (
-                          <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-[#A8E600] hover:shadow-md transition-all duration-300">
-                            <div className="text-2xl mb-1">🔌</div>
-                            <div className="text-xs text-gray-600 font-semibold">Battery</div>
-                            <div className="text-sm font-black text-[#36454F]">{product.batteryCapacity}</div>
                           </div>
                         )}
                       </div>
@@ -301,12 +288,12 @@ export default function ThreeWheelerProducts() {
                       {/* Action Buttons */}
                       <div className="flex flex-col sm:flex-row gap-3">
                         <Link href="/contact" className="flex-1">
-                          <button className="w-full bg-[#A8E600] hover:bg-[#98d600] text-[#36454F] font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105">
+                          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105">
                             Inquire Now
                           </button>
                         </Link>
                         <Link href="/dealership" className="flex-1">
-                          <button className="w-full border-2 border-[#36454F] hover:bg-[#36454F] hover:text-white text-[#36454F] font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
+                          <button className="w-full border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
                             Get Dealership
                           </button>
                         </Link>
@@ -324,12 +311,12 @@ export default function ThreeWheelerProducts() {
       {/* CTA Section */}
       <section className="px-4 py-16 bg-[#36454F] text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">Power Your Business with EV</h2>
-          <p className="text-lg text-gray-300 mb-6">Experience commercial excellence with our 3-wheeler solutions</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-4">Power Your EV</h2>
+          <p className="text-lg text-gray-300 mb-6">Get premium replacement batteries for your electric vehicle</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/contact">
-              <button className="bg-[#A8E600] hover:bg-[#98d600] text-[#36454F] font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
-                Schedule Test Drive
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+                Get Battery Today
               </button>
             </Link>
             <Link href="/">

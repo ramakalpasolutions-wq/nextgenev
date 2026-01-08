@@ -301,7 +301,7 @@ Andhra Pradesh, India</p>
                       onClick={() => toast('📧 Opening email client...', { duration: 2000 })}
                       className="text-[#007BFF] hover:underline block font-semibold"
                     >
-                      support@nextgeneev.com
+                      nextgenevofficial@gmail.com
                     </a>
                   </div>
                 </div>
@@ -315,7 +315,7 @@ Andhra Pradesh, India</p>
                   </div>
                   <div>
                     <h3 className="font-bold mb-1 text-[#212529]">Business Hours</h3>
-                    <p className="text-[#212529] opacity-80">Monday - Saturday: 9:00 AM - 6:00 PM<br />Sunday: Closed</p>
+                    <p className="text-[#212529] opacity-80">Monday - Saturday: 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
               </div>

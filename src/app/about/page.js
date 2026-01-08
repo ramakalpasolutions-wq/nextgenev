@@ -112,17 +112,17 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
             <div className="bg-white p-10 rounded-2xl text-center border-2 border-[#36454F]/10 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
               <div className="text-6xl font-black text-[#36454F] mb-3">10+</div>
               <p className="text-[#36454F] font-bold text-lg">Years Experience</p>
             </div>
-            <div className="bg-white p-10 rounded-2xl text-center border-2 border-[#36454F]/10 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            {/* <div className="bg-white p-10 rounded-2xl text-center border-2 border-[#36454F]/10 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
               <div className="text-6xl font-black text-[#A8E600] mb-3">50+</div>
               <p className="text-[#36454F] font-bold text-lg">Cities Covered</p>
-            </div>
+            </div> */}
             <div className="bg-white p-10 rounded-2xl text-center border-2 border-[#36454F]/10 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
-              <div className="text-6xl font-black text-[#36454F] mb-3">80K+</div>
+              <div className="text-6xl font-black text-[#36454F] mb-3">1000+</div>
               <p className="text-[#36454F] font-bold text-lg">Happy Customers</p>
             </div>
           </div>
@@ -152,19 +152,19 @@ export default function AboutPage() {
                   <svg className="w-6 h-6 text-[#A8E600] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Powerful Motor:</strong> 2500W-3000W BLDC hub motor</span>
+                  <span className="text-lg"><strong>Powerful Motor:</strong> BLDC hub motor</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#A8E600] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Top Speed:</strong> Up to 75 km/h</span>
+                  <span className="text-lg"><strong>Top Speed:</strong> Up to 45 km/h</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#A8E600] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Range:</strong> 100-120 km per charge</span>
+                  <span className="text-lg"><strong>Range:</strong> 50-150 km per charge</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#A8E600] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
@@ -194,7 +194,7 @@ export default function AboutPage() {
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Anti-Theft:</strong> GPS tracking and remote immobilization</span>
+                  <span className="text-lg"><strong>Anti-Theft:</strong> Central locking system and theft alarm</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
@@ -231,25 +231,25 @@ export default function AboutPage() {
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Payload Capacity:</strong> 500-700 kg</span>
+                  <span className="text-lg"><strong>Payload Capacity:</strong> 700-800 kg</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Cargo Volume:</strong> 2.5-3 cubic meters</span>
+                  <span className="text-lg"><strong>Cargo Volume:</strong> 4x6 feet</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Range:</strong> 120-150 km per charge</span>
+                  <span className="text-lg"><strong>Range:</strong> 150-300 km per charge</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Motor Power:</strong> 5000W BLDC motor</span>
+                  <span className="text-lg"><strong>Motor Power:</strong> 1500W BLDC motor</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#36454F] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
@@ -267,7 +267,7 @@ export default function AboutPage() {
                   <svg className="w-6 h-6 text-[#A8E600] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-lg"><strong>Cost Savings:</strong> 80% lower running cost vs diesel</span>
+                  <span className="text-lg"><strong>Cost Savings:</strong> 90% lower running cost vs diesel</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-[#A8E600] mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
@@ -316,13 +316,13 @@ export default function AboutPage() {
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
                   <span><strong>Capacity:</strong> 48V/60V/72V options</span>
                 </li>
-                <li className="flex items-start">
+                {/* <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
                   <span><strong>Energy Density:</strong> 150-200 Wh/kg</span>
-                </li>
+                </li> */}
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
-                  <span><strong>Cycle Life:</strong> 1500-2000 cycles</span>
+                  <span><strong>Cycle Life:</strong> 2000-3000 cycles</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
@@ -330,7 +330,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
-                  <span><strong>Weight:</strong> 20-30 kg (removable)</span>
+                  <span><strong>Weight:</strong> 10-30 kg (removable)</span>
                 </li>
               </ul>
             </div>
@@ -366,7 +366,7 @@ export default function AboutPage() {
               <ul className="space-y-3 text-[#36454F]">
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
-                  <span><strong>Battery Warranty:</strong> 3 years / 50,000 km</span>
+                  <span><strong>Battery Warranty:</strong> 3 years / 30,000 km</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
@@ -374,7 +374,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
-                  <span><strong>Free Service:</strong> First 2 services free</span>
+                  <span><strong>Free Service:</strong> First 3 services free</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
@@ -405,12 +405,12 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <div className="border-l-4 border-[#A8E600] pl-4">
                   <h4 className="font-bold text-lg text-[#36454F] mb-2">Standard Charger (3A)</h4>
-                  <p className="text-[#36454F]">Charging Time: 6-8 hours | Input: 230V AC | Portable</p>
+                  <p className="text-[#36454F]">Charging Time: 3-4 hours | Input: 230V AC | Portable</p>
                 </div>
-                <div className="border-l-4 border-[#A8E600] pl-4">
+                {/* <div className="border-l-4 border-[#A8E600] pl-4">
                   <h4 className="font-bold text-lg text-[#36454F] mb-2">Fast Charger (10A)</h4>
                   <p className="text-[#36454F]">Charging Time: 3-4 hours | Input: 230V AC | Wall-mounted</p>
-                </div>
+                </div> */}
                 <div className="bg-[#FFFFF0] p-4 rounded-lg mt-4 border-l-4 border-[#36454F]">
                   <p className="text-[#36454F]"><strong>💡 Home Setup:</strong> Simply plug into any standard 15A socket. No special installation required for basic charging.</p>
                 </div>
@@ -424,13 +424,13 @@ export default function AboutPage() {
                   <h4 className="font-bold text-lg text-[#36454F] mb-2">DC Fast Charging</h4>
                   <p className="text-[#36454F]">Charging Time: 45-60 minutes | 0-80% charge | Available at stations</p>
                 </div>
-                <div className="border-l-4 border-[#36454F] pl-4">
+                {/* <div className="border-l-4 border-[#36454F] pl-4">
                   <h4 className="font-bold text-lg text-[#36454F] mb-2">Battery Swapping</h4>
                   <p className="text-[#36454F]">Swap Time: 2-3 minutes | Full battery exchange | Coming soon</p>
-                </div>
-                <div className="bg-[#FFFFF0] p-4 rounded-lg mt-4 border-l-4 border-[#A8E600]">
+                </div> */}
+                {/* <div className="bg-[#FFFFF0] p-4 rounded-lg mt-4 border-l-4 border-[#A8E600]">
                   <p className="text-[#36454F]"><strong>🔍 Station Finder:</strong> Use our mobile app to locate 500+ charging stations across India.</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -17,12 +17,12 @@ export default function ServicesPage() {
       color: '#FFD700',
     },
     {
-      icon: '🚗',
-      title: 'Roadside Assistance',
-      description: '24/7 emergency roadside assistance across India',
-      features: ['Emergency charging', 'Towing service', 'On-spot repairs', 'Battery jump-start'],
-      color: '#00D9FF',
-    },
+  icon: '🛡️',
+  title: 'Insurance Cover',
+  description: 'Up to ₹3 Cr liability insurance protection for your EV',
+  features: ['3 Cr third-party cover', 'Own damage protection', 'Personal accident cover', 'Add-on roadside assistance'],
+  color: '#00D9FF',
+},
     {
       icon: '💡',
       title: 'Basic Services',
