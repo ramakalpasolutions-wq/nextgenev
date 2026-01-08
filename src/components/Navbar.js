@@ -15,7 +15,7 @@ export default function Navbar() {
             <Image 
               src="/nextgen.png" 
               alt="NextGen EV Logo" 
-              width={80} 
+              width={55} 
               height={100}
               className=""
               priority
