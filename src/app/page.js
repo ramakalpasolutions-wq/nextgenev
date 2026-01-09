@@ -315,35 +315,36 @@ export default function Home() {
 
 
       {/* WHY CHOOSE US */}
-      <section className="py-10 md:py-10 px-4 md:px-8 bg-[#FFFFF0]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-black mb-6 text-[#36454F]">
-              WHY CHOOSE <span className="text-[#36454F]">NEXTGEN EV</span>
-            </h2>
-            <div className="w-32 h-2 bg-[#A8E600] mx-auto mb-8"></div>
-            <p className="text-2xl text-[#36454F] opacity-80">
-              Leading the electric revolution in India with innovative vehicles,
-              advanced battery technology, and expert repair services.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { icon: '⚡', title: '100% Electric', desc: 'Zero emissions, pure performance' },
-              { icon: '🌱', title: 'Clean Mobility Facilities', desc: 'Sustainable electric mobility & supporting green transportation across India' },
-              { icon: '🔧', title: '3 Year Warranty', desc: 'On battery for new vehicles' },
-              { icon: '💬', title: '1 Year Warranty', desc: 'on motor,controller and charger' }
-            ].map((feature, i) => (
-              <div key={`why-${i}`} className="bg-[#FFFFF0] p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all text-center border-2 border-[#36454F]/10 hover:border-[#A8E600] group">
-                <div className="text-8xl mb-6 transform group-hover:scale-125 transition-transform">{feature.icon}</div>
-                <h3 className="text-2xl font-black mb-3 text-[#36454F]">{feature.title}</h3>
-                <p className="text-[#36454F]/70 font-semibold text-lg">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
+<section className="py-10 md:py-10 px-4 md:px-8 bg-[#FFFFF0]">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-20">
+      <h2 className="text-5xl md:text-7xl font-black mb-6 text-[#36454F]">
+        WHY CHOOSE <span className="text-[#36454F]">NEXTGEN EV</span>
+      </h2>
+      <div className="w-32 h-2 bg-[#A8E600] mx-auto mb-8"></div>
+      <p className="text-2xl text-[#36454F] opacity-80">
+        Leading the electric revolution in India with innovative vehicles,
+        advanced battery technology, and expert repair services.
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+      {[
+        { icon: '⚡', title: '100% Electric', desc: 'Zero emissions, pure performance' },
+        { icon: '🌱', title: 'Clean Mobility Facilities', desc: 'Sustainable electric mobility and  Eco-friendly EV infrastructure nationwide'},
+        { icon: '🔧', title: '3 Year Warranty', desc: 'On battery for new vehicles' },
+        { icon: '💬', title: '1 Year Warranty', desc: 'on motor,controller and charger' }
+      ].map((feature, i) => (
+        <div key={`why-${i}`} className="bg-[#FFFFF0] p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all text-center border-2 border-[#36454F]/10 hover:border-[#A8E600] group">
+          <div className="text-6xl sm:text-7xl md:text-8xl mb-4 sm:mb-5 md:mb-6 transform group-hover:scale-125 transition-transform">{feature.icon}</div>
+          <h3 className="text-xl sm:text-2xl md:text-2xl font-black mb-2 sm:mb-3 md:mb-3 text-[#36454F]">{feature.title}</h3>
+          <p className="text-[#36454F]/70 font-semibold text-base sm:text-lg md:text-lg">{feature.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
       {/* DEALERSHIP PROMO */}

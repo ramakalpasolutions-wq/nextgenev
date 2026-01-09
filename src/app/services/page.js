@@ -20,7 +20,7 @@ export default function ServicesPage() {
   icon: '🛡️',
   title: 'Insurance Cover',
   description: 'Up to ₹3 Cr liability insurance protection for your EV caused by battery ',
-  features: ['3 crores rupees  cover'],
+ features: ['3 crores rupees cover', 'New India Assurance Battery Protect add-on', 'Covers battery repair/replacement.'] ,
   color: '#00D9FF',
 },
     {
