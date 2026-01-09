@@ -91,7 +91,7 @@ export default function Home() {
       images: [],
       storageKey: 'twoWheelerUrls',
       features: [
-        { label: 'Range', value: '50-120 km', icon: '🔋' },
+        { label: 'Range', value: '50-150 km', icon: '🔋' },
         { label: 'Charging', value: 'Fast Charging', icon: '⚡' }
       ]
     },
@@ -110,7 +110,7 @@ export default function Home() {
     },
     {
       id: 3,
-      name: "EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries Sales & Repair",
+      name: "EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries Sales & Service",
       category: "Battery & Pack Repair",
       tagline: "Restore Range. Extend Life.",
       description: "Specialised repair of EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries including cell testing, module replacement, BMS diagnostics, and capacity restoration. Issues such as range drop, auto cut-off, overheating, or charging faults are identified using advanced testing tools and repaired with high-quality cells and components. Every serviced pack is balanced, safety-tested, and load-tested for reliable daily performance.",
@@ -123,7 +123,7 @@ export default function Home() {
     },
     {
       id: 4,
-      name: "EV Chargers sale,Repair & Service",
+      name: "EV Chargers Sales & Service",
       category: "Charger Repair",
       tagline: "Safe & Fast Charging, Always.",
       description: "Complete service and repair of EV chargers and power supplies including fan failure, no output, slow charging, fuse damage, and connector issues. Internal PCB, cooling system, MOSFETs, and protection circuits are inspected and repaired with compatible components. Each charger is calibrated for correct output voltage and current to protect your battery and deliver fast, consistent charging.",
@@ -253,7 +253,7 @@ export default function Home() {
           
           <p className="text-xl md:text-2xl mb-12 font-semibold max-w-4xl mx-auto text-gray-500">
             Experience India's most advanced electric 2-wheelers, 3-wheelers,
-            and expert EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries & chargers Sales & repair services.
+            and expert EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries & chargers Sales & services.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

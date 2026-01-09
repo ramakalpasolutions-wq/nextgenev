@@ -370,7 +370,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>
-                  <span><strong>Performance:</strong> 70% capacity guarantee</span>
+                  <span><strong>Performance:</strong> 90% capacity guarantee</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#A8E600] mr-2 font-bold">•</span>

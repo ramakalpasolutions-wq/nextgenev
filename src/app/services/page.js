@@ -211,7 +211,7 @@ export default function ServicesPage() {
                         }}
                       >
                         <svg
-                          className="flex-shrink-0"
+                          className="flex-shrink-0)"
                           style={{ 
                             width: 20, 
                             height: 20, 
