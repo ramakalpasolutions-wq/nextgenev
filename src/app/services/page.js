@@ -19,8 +19,8 @@ export default function ServicesPage() {
     {
   icon: '🛡️',
   title: 'Insurance Cover',
-  description: 'Up to ₹3 Cr liability insurance protection for your EV',
-  features: ['3 Cr third-party cover', 'Own damage protection', 'Personal accident cover', 'Add-on roadside assistance'],
+  description: 'Up to ₹3 Cr liability insurance protection for your EV caused by battery ',
+  features: ['3 crores rupees  cover'],
   color: '#00D9FF',
 },
     {

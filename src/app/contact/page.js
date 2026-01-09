@@ -315,7 +315,7 @@ Andhra Pradesh, India</p>
                   </div>
                   <div>
                     <h3 className="font-bold mb-1 text-[#212529]">Business Hours</h3>
-                    <p className="text-[#212529] opacity-80">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-[#212529] opacity-80">Monday - Saturday: 9:00 AM - 7:00 PM</p>
                   </div>
                 </div>
               </div>
