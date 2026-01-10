@@ -16,8 +16,8 @@ export default function AdminLogin() {
 
     setTimeout(() => {
       if (
-        credentials.username === "NEXTGEN" &&
-        credentials.password === "Nextgen@2025"
+        credentials.username === "NEXTGENEV" &&
+        credentials.password === "Manohar@1959"
       ) {
         localStorage.setItem("adminAuth", "true");
         router.push("/admin/dashboard");
