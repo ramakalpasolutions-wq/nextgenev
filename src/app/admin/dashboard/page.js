@@ -591,7 +591,8 @@ export default function AdminDashboard() {
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-[#212529] mb-4">
               Admin <span className="text-[#A8E600]">Dashboard</span>
             </h1>
-            <p className="text-[#495057] text-base md:text-lg">Cloudinary-powered media management</p>
+            <p className="text-[#495057] text-base md:text-lg"></p>
+          
           </div>
 
 
