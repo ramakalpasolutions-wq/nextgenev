@@ -2,8 +2,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
-
-
 export default function AdminDashboard() {
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('heroImages')
@@ -13,8 +11,6 @@ export default function AdminDashboard() {
   const [products, setProducts] = useState({})
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-
 
   // Product form state - ALL FIELDS INITIALIZED WITH EMPTY STRINGS
   const [productForm, setProductForm] = useState({
@@ -40,8 +36,6 @@ export default function AdminDashboard() {
   const [editingProductIndex, setEditingProductIndex] = useState(null)
   const [showProductForm, setShowProductForm] = useState(false)
 
-
-
   const sections = [
   // Gallery Sections
   { id: 'heroImages', name: 'Hero Section', storageKey: 'heroImages', icon: '🎬', type: 'gallery' },
@@ -56,9 +50,6 @@ export default function AdminDashboard() {
   { id: 'chargerProducts', name: 'Charger Products', storageKey: 'chargerProducts', icon: '⚡', type: 'products', fields: ['power', 'chargingSpeed', 'compatibility', 'waterproof', 'warranty', 'weight'] },
 ]
 
-
-
-
   // Check authentication on mount
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('adminAuth')
@@ -66,8 +57,6 @@ export default function AdminDashboard() {
       router.push('/admin-login')
     }
   }, [router])
-
-
 
   // Logout function
   const handleLogout = () => {
@@ -77,20 +66,14 @@ export default function AdminDashboard() {
     }
   }
 
-
-
   // Load all media from API
   const loadAllMedia = async () => {
     try {
       const response = await fetch('/api/media')
       const data = await response.json()
 
-
-
       const mediaData = {}
       const productData = {}
-
-
 
       sections.forEach(section => {
         if (section.type === 'gallery') {
@@ -100,8 +83,6 @@ export default function AdminDashboard() {
         }
       })
 
-
-
       setMedia(mediaData)
       setProducts(productData)
     } catch (error) {
@@ -110,13 +91,9 @@ export default function AdminDashboard() {
     }
   }
 
-
-
   useEffect(() => {
     loadAllMedia()
   }, [])
-
-
 
   // Upload to Cloudinary
   const uploadToCloudinary = async (file, folder = 'nextgen-ev') => {
@@ -124,25 +101,17 @@ export default function AdminDashboard() {
       const timestamp = Math.round(Date.now() / 1000)
       const uploadParams = { timestamp, folder }
 
-
-
       const signatureResponse = await fetch('/api/upload-signature', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paramsToSign: uploadParams }),
       })
 
-
-
       if (!signatureResponse.ok) {
         throw new Error('Failed to get signature')
       }
 
-
-
       const { signature, apiKey, cloudName } = await signatureResponse.json()
-
-
 
       const formData = new FormData()
       formData.append('file', file)
@@ -151,24 +120,16 @@ export default function AdminDashboard() {
       formData.append('signature', signature)
       formData.append('folder', folder)
 
-
-
       const uploadResponse = await fetch(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         { method: 'POST', body: formData }
       )
 
-
-
       if (!uploadResponse.ok) {
         throw new Error('Cloudinary upload failed')
       }
 
-
-
       const result = await uploadResponse.json()
-
-
 
       return {
         url: result.secure_url,
@@ -182,14 +143,28 @@ export default function AdminDashboard() {
     }
   }
 
-
-
-  // Handle gallery image upload
+  // Handle gallery image upload - MODIFIED FOR HERO SECTION
   const handleFileUpload = async (e) => {
     const files = Array.from(e.target.files)
     if (files.length === 0) return
 
+    // Special handling for hero images - limit to 2 images total
+    if (activeSection === 'heroImages') {
+      const currentHeroImages = media[activeSection] || []
+      const remainingSlots = 2 - currentHeroImages.length
 
+      if (remainingSlots <= 0) {
+        setUploadStatus('❌ Hero section can only have 2 images. Please delete existing images first.')
+        setTimeout(() => setUploadStatus(''), 4000)
+        return
+      }
+
+      if (files.length > remainingSlots) {
+        setUploadStatus(`❌ You can only upload ${remainingSlots} more image(s) for hero section`)
+        setTimeout(() => setUploadStatus(''), 4000)
+        return
+      }
+    }
 
     const validFiles = files.filter(file => file.type.startsWith('image/'))
     if (validFiles.length === 0) {
@@ -198,23 +173,15 @@ export default function AdminDashboard() {
       return
     }
 
-
-
     setIsUploading(true)
     setUploadStatus(`Uploading ${validFiles.length} image(s)...`)
-
-
 
     try {
       const uploadedImages = []
 
-
-
       for (let i = 0; i < validFiles.length; i++) {
         const file = validFiles[i]
         setUploadStatus(`Uploading ${i + 1}/${validFiles.length}...`)
-
-
 
         try {
           const result = await uploadToCloudinary(file, `nextgen-ev/${activeSection}`)
@@ -224,14 +191,10 @@ export default function AdminDashboard() {
         }
       }
 
-
-
       if (uploadedImages.length === 0) {
         setUploadStatus('❌ All uploads failed')
         return
       }
-
-
 
       const currentSection = sections.find(s => s.id === activeSection)
       await fetch('/api/media', {
@@ -242,8 +205,6 @@ export default function AdminDashboard() {
           images: uploadedImages
         })
       })
-
-
 
       await loadAllMedia()
       setUploadStatus(`✅ ${uploadedImages.length} image(s) uploaded!`)
@@ -256,38 +217,26 @@ export default function AdminDashboard() {
     }
   }
 
-
-
   // Handle product image upload
   const handleProductImageUpload = async (e) => {
     const files = Array.from(e.target.files)
     if (files.length === 0) return
 
-
-
     const validFiles = files.filter(file => file.type.startsWith('image/'))
     setUploadStatus(`Uploading ${validFiles.length} product image(s)...`)
 
-
-
     try {
       const uploadedUrls = []
-
-
 
       for (let file of validFiles) {
         const result = await uploadToCloudinary(file, `nextgen-ev/products/${activeSection}`)
         uploadedUrls.push(result.url)
       }
 
-
-
       setProductForm(prev => ({
         ...prev,
         images: [...(prev.images || []), ...uploadedUrls]
       }))
-
-
 
       setUploadStatus(`✅ ${uploadedUrls.length} image(s) added!`)
       setTimeout(() => setUploadStatus(''), 2000)
@@ -297,8 +246,6 @@ export default function AdminDashboard() {
     }
   }
 
-
-
   const saveProduct = async () => {
     if (!productForm.name || !productForm.description || !productForm.images || productForm.images.length === 0) {
       setUploadStatus('❌ Please fill name, description and add images')
@@ -306,11 +253,7 @@ export default function AdminDashboard() {
       return
     }
 
-
-
     const currentSection = sections.find(s => s.id === activeSection)
-
-
 
     try {
       if (editingProductIndex !== null) {
@@ -336,8 +279,6 @@ export default function AdminDashboard() {
         setUploadStatus('✅ Product added!')
       }
 
-
-
       await loadAllMedia()
       resetProductForm()
       setEditingProductIndex(null)
@@ -348,8 +289,6 @@ export default function AdminDashboard() {
       setUploadStatus('❌ Save failed')
     }
   }
-
-
 
   // Reset product form to initial state
   const resetProductForm = () => {
@@ -375,16 +314,10 @@ export default function AdminDashboard() {
     })
   }
 
-
-
   const deleteImage = async (index) => {
     if (!confirm('Delete this image?')) return
 
-
-
     const currentSection = sections.find(s => s.id === activeSection)
-
-
 
     try {
       await fetch('/api/media', {
@@ -395,8 +328,6 @@ export default function AdminDashboard() {
           index
         })
       })
-
-
 
       await loadAllMedia()
       setUploadStatus('✅ Image deleted!')
@@ -406,16 +337,10 @@ export default function AdminDashboard() {
     }
   }
 
-
-
   const deleteProduct = async (index) => {
     if (!confirm('Delete this product?')) return
 
-
-
     const currentSection = sections.find(s => s.id === activeSection)
-
-
 
     try {
       await fetch('/api/media', {
@@ -427,8 +352,6 @@ export default function AdminDashboard() {
         })
       })
 
-
-
       await loadAllMedia()
       setUploadStatus('✅ Product deleted!')
       setTimeout(() => setUploadStatus(''), 2000)
@@ -436,8 +359,6 @@ export default function AdminDashboard() {
       setUploadStatus('❌ Delete failed')
     }
   }
-
-
 
   const editProduct = (index) => {
     const currentProducts = products[activeSection] || []
@@ -468,8 +389,6 @@ export default function AdminDashboard() {
     }
   }
 
-
-
   const removeProductImage = (index) => {
     setProductForm(prev => ({
       ...prev,
@@ -477,14 +396,11 @@ export default function AdminDashboard() {
     }))
   }
 
-
-
   const currentSectionData = sections.find(s => s.id === activeSection)
   const currentMedia = media[activeSection] || []
   const currentProducts = products[activeSection] || []
   const isProductSection = currentSectionData?.type === 'products'
-
-
+  const isHeroSection = activeSection === 'heroImages'
 
   return (
     <div className="min-h-screen bg-[#FFFFF0] flex">
@@ -537,7 +453,6 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-
         {/* Navigation */}
         <nav className="p-4 overflow-y-auto h-[calc(100vh-180px)]">
           <div className="space-y-3">
@@ -564,7 +479,6 @@ export default function AdminDashboard() {
           </div>
         </nav>
 
-
         {/* Logout Button */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[#495057]">
           <button
@@ -580,7 +494,6 @@ export default function AdminDashboard() {
         </div>
       </aside>
 
-
       {/* Main Content */}
       <main className={`flex-1 transition-all duration-300 pt-20 w-full lg:ml-72 ${
         sidebarOpen ? 'lg:ml-72' : 'lg:ml-20'
@@ -591,10 +504,8 @@ export default function AdminDashboard() {
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-[#212529] mb-4">
               Admin <span className="text-[#A8E600]">Dashboard</span>
             </h1>
-            <p className="text-[#495057] text-base md:text-lg"></p>
-          
+            <p className="text-[#495057] text-base md:text-lg">Cloudinary-powered media management</p>
           </div>
-
 
           {uploadStatus && (
             <div className={`mb-6 p-4 rounded-xl text-center ${
@@ -604,53 +515,89 @@ export default function AdminDashboard() {
             </div>
           )}
 
-
           {/* Gallery Upload */}
           {!isProductSection && (
             <>
               <div className="bg-white rounded-3xl p-4 md:p-8 mb-6 md:mb-8 border-2 border-[#A8E600]/30 shadow-lg">
                 <h2 className="text-xl md:text-2xl font-bold text-[#212529] mb-4 md:mb-6">
                   Upload Images for {currentSectionData?.name}
+                  {isHeroSection && (
+                    <span className="block text-sm text-[#6C757D] mt-2 font-normal">
+                      ⚠️ Hero section requires exactly 2 images (currently: {currentMedia.length}/2)
+                    </span>
+                  )}
                 </h2>
                 <input
                   type="file"
-                  multiple
+                  multiple={!isHeroSection}
                   accept="image/*"
                   onChange={handleFileUpload}
-                  disabled={isUploading}
+                  disabled={isUploading || (isHeroSection && currentMedia.length >= 2)}
                   className="hidden"
                   id="file-upload"
                 />
                 <label
                   htmlFor="file-upload"
                   className={`block w-full p-6 md:p-8 border-2 border-dashed rounded-2xl text-center cursor-pointer transition ${
-                    isUploading ? 'border-gray-400 bg-gray-100 cursor-not-allowed' : 'border-[#007BFF] hover:border-[#A8E600] bg-[#F8F9FA]'
+                    isUploading || (isHeroSection && currentMedia.length >= 2)
+                      ? 'border-gray-400 bg-gray-100 cursor-not-allowed' 
+                      : 'border-[#007BFF] hover:border-[#A8E600] bg-[#F8F9FA]'
                   }`}
                 >
-                  <div className="text-4xl md:text-6xl mb-4">☁️</div>
+                  <div className="text-4xl md:text-6xl mb-4">
+                    {isHeroSection && currentMedia.length >= 2 ? '🔒' : '☁️'}
+                  </div>
                   <p className="text-[#212529] text-base md:text-lg font-bold mb-2">
-                    {isUploading ? 'Uploading...' : 'Click to upload images'}
+                    {isUploading 
+                      ? 'Uploading...' 
+                      : isHeroSection && currentMedia.length >= 2
+                      ? 'Hero section full (2/2 images)'
+                      : isHeroSection
+                      ? `Click to upload hero image ${currentMedia.length + 1}/2`
+                      : 'Click to upload images'
+                    }
                   </p>
-                  <p className="text-[#6C757D] text-sm md:text-base">Cloudinary secure upload</p>
+                  <p className="text-[#6C757D] text-sm md:text-base">
+                    {isHeroSection && currentMedia.length < 2
+                      ? `Upload ${2 - currentMedia.length} more image(s) for hero section`
+                      : 'Cloudinary secure upload'
+                    }
+                  </p>
                 </label>
               </div>
 
-
-              {/* Image Grid */}
+              {/* Image Grid - MODIFIED FOR HERO SECTION */}
               <div className="bg-white rounded-3xl p-4 md:p-8 border-2 border-[#007BFF]/30 shadow-lg">
                 <h2 className="text-xl md:text-2xl font-bold text-[#212529] mb-4 md:mb-6">
-                  Current Images ({currentMedia.length})
+                  Current Images ({currentMedia.length}{isHeroSection ? '/2' : ''})
                 </h2>
                 {currentMedia.length === 0 ? (
                   <div className="text-center py-12">
                     <div className="text-4xl md:text-6xl mb-4">📁</div>
-                    <p className="text-[#6C757D] text-base md:text-lg">No images uploaded</p>
+                    <p className="text-[#6C757D] text-base md:text-lg">
+                      {isHeroSection ? 'Upload 2 hero images to display side by side' : 'No images uploaded'}
+                    </p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+                  <div className={`grid gap-3 md:gap-6 ${
+                    isHeroSection 
+                      ? 'grid-cols-1 md:grid-cols-2' 
+                      : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+                  }`}>
                     {currentMedia.map((item, index) => (
                       <div key={index} className="relative group bg-[#F8F9FA] rounded-xl overflow-hidden border-2 border-transparent hover:border-[#A8E600] transition shadow-md">
-                        <img src={item.url} alt={item.name || `Image ${index + 1}`} className="w-full h-32 md:h-48 object-cover" />
+                        {isHeroSection && (
+                          <div className="absolute top-2 left-2 bg-[#A8E600] text-[#212529] px-3 py-1 rounded-full text-xs font-bold z-10">
+                            Hero Image {index + 1}
+                          </div>
+                        )}
+                        <img 
+                          src={item.url} 
+                          alt={item.name || `Image ${index + 1}`} 
+                          className={`w-full object-cover ${
+                            isHeroSection ? 'h-48 md:h-64' : 'h-32 md:h-48'
+                          }`} 
+                        />
                         <button
                           onClick={() => deleteImage(index)}
                           className="absolute top-2 right-2 bg-red-600 text-white w-7 h-7 md:w-8 md:h-8 rounded-full opacity-0 group-hover:opacity-100 transition font-bold text-sm"
@@ -662,7 +609,6 @@ export default function AdminDashboard() {
               </div>
             </>
           )}
-
 
           {/* Product Management */}
           {isProductSection && (
@@ -684,7 +630,6 @@ export default function AdminDashboard() {
                   </button>
                 </div>
 
-
                 {showProductForm && (
                   <div className="bg-[#F8F9FA] rounded-2xl p-4 md:p-6 mb-6 border border-[#DEE2E6]">
                     {/* Basic Info */}
@@ -704,7 +649,6 @@ export default function AdminDashboard() {
                         placeholder="Price (e.g., ₹1,99,999)"
                       />
                     </div>
-
 
                     {/* Specification Fields */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -836,7 +780,6 @@ export default function AdminDashboard() {
                       )}
                     </div>
 
-
                     {/* Description */}
                     <textarea
                       value={productForm.description}
@@ -844,7 +787,6 @@ export default function AdminDashboard() {
                       className="w-full px-4 py-2 rounded-lg bg-white text-[#212529] border-2 border-[#007BFF]/30 focus:border-[#A8E600] outline-none h-32 mb-4 text-sm md:text-base"
                       placeholder="Product Description *"
                     />
-
 
                     {/* Image Upload */}
                     <input
@@ -861,7 +803,6 @@ export default function AdminDashboard() {
                     >
                       <p className="text-[#212529] font-bold text-sm md:text-base">📸 Click to add product images</p>
                     </label>
-
 
                     {/* Image Preview */}
                     {productForm.images && productForm.images.length > 0 && (
@@ -881,7 +822,6 @@ export default function AdminDashboard() {
                       </div>
                     )}
 
-
                     {/* Save Button */}
                     <button
                       onClick={saveProduct}
@@ -892,7 +832,6 @@ export default function AdminDashboard() {
                   </div>
                 )}
               </div>
-
 
               {/* Products List */}
               <div className="bg-white rounded-3xl p-4 md:p-8 border-2 border-[#007BFF]/30 shadow-lg">
