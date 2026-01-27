@@ -98,7 +98,11 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-[#F8F9FA] opacity-70 text-sm">
           <p>© 2026 NextGen EV. All rights reserved. | Designed for Indian Roads</p>
         </div>
+         <a className="border-t border-gray-700 text-center text-[#F8F9FA] opacity-70 text-sm" href='https://www.ramakalpasolutions.in/'>
+          <p> Designed by Ramakalpa Solutions</p>
+        </a>
       </div>
+     
     </footer>
   )
 }
