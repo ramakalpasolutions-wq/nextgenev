@@ -176,21 +176,21 @@ export default function Home() {
   const heroImage2 = heroImages[1]
 
   return (
-    <main className="min-h-screen bg-[#FFFFF0] pt-23">
+    <main className="min-h-screen bg-[#FFFFF0] pt-21">
       {/* HERO SECTION - TWO IMAGES SIDE BY SIDE */}
    <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-transparent">     
   
   {/* Two Images Side by Side - SHOW FULL IMAGES */}
   <div className="w-full max-w-8xl mx-auto mb-12 px-0">
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 h-[450px] sm:h-[550px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-0  h-[450px] sm:h-[550px]">
       {/* Image 1 */}
-      <div className="relative w-full h-full rounded-l-2xl overflow-hidden shadow-2xl bg-[#F8F9FA]">
+      <div className="relative w-full h-full  overflow-hidden shadow-2xl bg-[#F8F9FA]">
         {heroImage1 ? (
           <Image 
             src={typeof heroImage1 === 'string' ? heroImage1 : heroImage1.url} 
             alt="Hero Image 1" 
             fill 
-            className="object-contain p-4" 
+            className="object-cover " 
             priority
           />
         ) : (
@@ -206,13 +206,13 @@ export default function Home() {
       
 
       {/* Image 2 */}
-      <div className="relative w-full h-full rounded-r-3xl overflow-hidden shadow-2xl bg-[#F8F9FA]">
+      <div className="relative w-full h-full  overflow-hidden shadow-2xl bg-[#F8F9FA]">
         {heroImage2 ? (
           <Image 
             src={typeof heroImage2 === 'string' ? heroImage2 : heroImage2.url} 
             alt="Hero Image 2" 
             fill 
-            className="object-contain p-4" 
+            className="object-cover" 
             priority
           />
         ) : (
