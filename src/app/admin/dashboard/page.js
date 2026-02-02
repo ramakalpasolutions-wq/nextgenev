@@ -151,13 +151,14 @@ export default function AdminDashboard() {
     // Special handling for hero images - limit to 2 images total
     if (activeSection === 'heroImages') {
       const currentHeroImages = media[activeSection] || []
-      const remainingSlots = 2 - currentHeroImages.length
+     const remainingSlots = 1 - currentHeroImages.length
 
-      if (remainingSlots <= 0) {
-        setUploadStatus('❌ Hero section can only have 2 images. Please delete existing images first.')
-        setTimeout(() => setUploadStatus(''), 4000)
-        return
-      }
+if (remainingSlots <= 0) {
+  setUploadStatus('❌ Hero section can only have 1 image. Please delete the existing image first.')
+  setTimeout(() => setUploadStatus(''), 4000)
+  return
+}
+
 
       if (files.length > remainingSlots) {
         setUploadStatus(`❌ You can only upload ${remainingSlots} more image(s) for hero section`)
@@ -523,7 +524,7 @@ export default function AdminDashboard() {
                   Upload Images for {currentSectionData?.name}
                   {isHeroSection && (
                     <span className="block text-sm text-[#6C757D] mt-2 font-normal">
-                      ⚠️ Hero section requires exactly 2 images (currently: {currentMedia.length}/2)
+                      ⚠️ Hero section requires exactly 1 image (currently: {currentMedia.length}/1)
                     </span>
                   )}
                 </h2>
@@ -532,7 +533,7 @@ export default function AdminDashboard() {
                   multiple={!isHeroSection}
                   accept="image/*"
                   onChange={handleFileUpload}
-                  disabled={isUploading || (isHeroSection && currentMedia.length >= 2)}
+                 disabled={isUploading || (isHeroSection && currentMedia.length >= 1)}
                   className="hidden"
                   id="file-upload"
                 />
@@ -545,15 +546,15 @@ export default function AdminDashboard() {
                   }`}
                 >
                   <div className="text-4xl md:text-6xl mb-4">
-                    {isHeroSection && currentMedia.length >= 2 ? '🔒' : '☁️'}
+                    {isHeroSection && currentMedia.length >= 1 ? '🔒' : '☁️'}
                   </div>
                   <p className="text-[#212529] text-base md:text-lg font-bold mb-2">
                     {isUploading 
                       ? 'Uploading...' 
-                      : isHeroSection && currentMedia.length >= 2
-                      ? 'Hero section full (2/2 images)'
+                      : isHeroSection && currentMedia.length >= 1
+                      ? 'Hero section full (1/1 image)'
                       : isHeroSection
-                      ? `Click to upload hero image ${currentMedia.length + 1}/2`
+                      ? `Click to upload hero image`
                       : 'Click to upload images'
                     }
                   </p>
@@ -569,7 +570,7 @@ export default function AdminDashboard() {
               {/* Image Grid - MODIFIED FOR HERO SECTION */}
               <div className="bg-white rounded-3xl p-4 md:p-8 border-2 border-[#007BFF]/30 shadow-lg">
                 <h2 className="text-xl md:text-2xl font-bold text-[#212529] mb-4 md:mb-6">
-                  Current Images ({currentMedia.length}{isHeroSection ? '/2' : ''})
+                  Current Images ({currentMedia.length}{isHeroSection ? '/1' : ''})
                 </h2>
                 {currentMedia.length === 0 ? (
                   <div className="text-center py-12">
@@ -588,7 +589,7 @@ export default function AdminDashboard() {
                       <div key={index} className="relative group bg-[#F8F9FA] rounded-xl overflow-hidden border-2 border-transparent hover:border-[#A8E600] transition shadow-md">
                         {isHeroSection && (
                           <div className="absolute top-2 left-2 bg-[#A8E600] text-[#212529] px-3 py-1 rounded-full text-xs font-bold z-10">
-                            Hero Image {index + 1}
+                            Hero Image
                           </div>
                         )}
                         <img 

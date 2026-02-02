@@ -172,95 +172,59 @@ export default function Home() {
   }, [])
 
   // Get exactly 2 hero images or show placeholder
-  const heroImage1 = heroImages[0]
-  const heroImage2 = heroImages[1]
+  // const heroImage1 = heroImages[0]
+  // const heroImage2 = heroImages[1]
 
   return (
-    <main className="min-h-screen bg-[#FFFFF0] pt-21">
+    <main className="min-h-screen bg-[#FFFFF0] pt-20">
       {/* HERO SECTION - TWO IMAGES SIDE BY SIDE */}
-   <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-transparent">     
-  
-  {/* Two Images Side by Side - SHOW FULL IMAGES */}
-  <div className="w-full max-w-8xl mx-auto mb-12 px-0">
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-0  h-[450px] sm:h-[550px]">
-      {/* Image 1 */}
-      <div className="relative w-full h-full  overflow-hidden shadow-2xl bg-[#F8F9FA]">
-        {heroImage1 ? (
-          <Image 
-            src={typeof heroImage1 === 'string' ? heroImage1 : heroImage1.url} 
-            alt="Hero Image 1" 
-            fill 
-            className="object-cover " 
-            priority
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#007BFF]/10 to-[#A8E600]/10 border-2 border-dashed border-[#007BFF]/20 rounded-l-3xl">
-            <div className="text-center p-8">
-              <div className="text-6xl mb-4">📷</div>
-              <p className="text-xl text-[#36454F] font-bold mb-2">Hero Image 1</p>
-              <p className="text-sm text-[#36454F]/60">Upload from admin dashboard</p>
-            </div>
-          </div>
-        )}
-      </div>
-      
+ {/* HERO SECTION – UNIVERSAL FIT (NO CROP, NO ZOOM) */}
+<section id="home" className="relative w-full bg-black overflow-hidden">
 
-      {/* Image 2 */}
-      <div className="relative w-full h-full  overflow-hidden shadow-2xl bg-[#F8F9FA]">
-        {heroImage2 ? (
-          <Image 
-            src={typeof heroImage2 === 'string' ? heroImage2 : heroImage2.url} 
-            alt="Hero Image 2" 
-            fill 
-            className="object-cover" 
-            priority
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#007BFF]/10 to-[#A8E600]/10 border-2 border-dashed border-[#007BFF]/20 rounded-r-3xl">
-            <div className="text-center p-8">
-              <div className="text-6xl mb-4">📷</div>
-              <p className="text-xl text-[#36454F] font-bold mb-2">Hero Image 2</p>
-              <p className="text-sm text-[#36454F]/60">Upload from admin dashboard</p>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-    
-  </div>
-  
-
-  {/* Rest of your hero content remains the same */}
-  {/* Hero Text Content */}
-  <div className="relative z-10 text-center text-[#36454F] px-4 max-w-6xl mx-auto">
-    <p className="text-xl md:text-2xl mb-4 font-bold tracking-wider text-[#36454F]/80">ELECTRIC REVOLUTION</p>
-    
-    <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tight text-[#36454F]">
-      DRIVE THE<br/>
-      <span className="text-[#36454F]">FUTURE</span>
-    </h1>
-    
-    <p className="text-xl md:text-2xl mb-12 font-semibold max-w-4xl mx-auto text-gray-500">
-      Experience India's most advanced electric 2-wheelers, 3-wheelers,
-      and expert EV lithium-ion & LFP(Lithium Ferrous phosphate) batteries & chargers Sales & repair services.
-    </p>
-    
-    <div className="flex flex-col sm:flex-row gap-6 justify-center">
-      <Link href="/products">
-        <button className="bg-[#A8E600] hover:bg-[#98d600] text-[#36454F] font-bold py-5 px-12 rounded-full transition-all transform hover:scale-110 shadow-2xl text-xl">
-          EXPLORE VEHICLES →
-        </button>
-      </Link>
-      <Link href="/dealership">
-        <button className="bg-transparent border-3 border-[#36454F] hover:bg-[#36454F] hover:text-[#F5F5DC] text-[#36454F] font-bold py-5 px-12 rounded-full transition-all transform hover:scale-110 text-xl">
-          GET DEALERSHIP
-        </button>
-      </Link>
-    </div>
+  {/* IMAGE CONTAINER */}
+  <div
+    className="
+      relative
+      w-full
+      aspect-[21/9]
+      max-h-[80vh]
+      mx-auto
+    "
+  >
+    {heroImages[0] && (
+      <Image
+        src={typeof heroImages[0] === "string" ? heroImages[0] : heroImages[0].url}
+        alt="Hero Banner"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+    )}
   </div>
 
  
+
 </section>
+{/* HERO TEXT BELOW IMAGE */}
+<section className="py-12 md:py-20 px-4 bg-[#FFFFF0]">
+  <div className="max-w-6xl mx-auto text-center">
+    <p className="text-sm md:text-xl mb-3 font-bold tracking-wider text-[#36454F]">
+      ELECTRIC REVOLUTION
+    </p>
+
+    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 text-[#36454F]">
+      DRIVE THE<br />FUTURE
+    </h1>
+
+    <p className="text-base md:text-xl text-[#36454F]/80 max-w-4xl mx-auto">
+      India’s advanced electric 2-wheelers, 3-wheelers & EV battery solutions
+    </p>
+  </div>
+</section>
+
+
+
 
 
 
