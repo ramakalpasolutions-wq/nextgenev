@@ -13,16 +13,16 @@ export default function Navbar() {
           {/* Logo Section */}
           <Link href="/" className="flex items-center space-x-3 hover:opacity-90 transition">
             <Image 
-              src="/nextgen.png" 
+              src="/Nextgen logo-White-Green.png" 
               alt="NextGen EV Logo" 
-              width={55} 
+              width={150} 
               height={100}
               className=""
               priority
             />
-            <span className="text-2xl font-bold text-[#F8F9FA]">
+            {/* <span className="text-2xl font-bold text-[#F8F9FA]">
               NextGen<span className="text-[#7AB800]">EV</span>
-            </span>
+            </span> */}
           </Link>
           
           {/* Desktop Menu */}

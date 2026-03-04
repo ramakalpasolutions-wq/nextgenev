@@ -83,7 +83,7 @@ export default function Home() {
       images: [],
       storageKey: 'twoWheelerUrls',
       features: [
-        { label: 'Range', value: '50-120 km', icon: '🔋' },
+        { label: 'Range', value: '50-150 km', icon: '🔋' },
         { label: 'Charging', value: 'Fast Charging', icon: '⚡' }
       ]
     },
